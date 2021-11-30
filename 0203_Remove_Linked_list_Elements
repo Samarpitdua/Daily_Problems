@@ -1,0 +1,51 @@
+class Solution {
+public:
+    vector<int> findClosestElements(vector<int>& arr, int k, int x) {
+        vector<int> ans;
+        int n = arr.size();
+        int temp = n - 1;
+        for(int i = 0; i < n;i++)
+        {
+            if(x <= arr[i])
+            {
+                temp = i;
+           //     cout<<temp<<" ";
+                break;
+            }
+        }
+       // cout<<temp<<" ";
+        if(temp != 0)
+        {
+            if(abs(arr[temp] - x) > abs(arr[temp-1] - x))
+            {
+                temp = temp-1;
+            }
+        }
+        ans.push_back(arr[temp]);
+        k -= 1;
+        cout<<temp<<" ";
+        for(int i = temp-1, j = temp+1 ; k > 0 ;)
+        {
+            if(i < 0)ans.push_back(arr[j]),j++;
+           else if(j > (n-1))
+            {        
+                ans.push_back(arr[i]);
+                i--;
+            }
+                
+            else if(abs(arr[i] - x) <= abs(arr[j] - x))
+            {
+                ans.push_back(arr[i]);
+                i--;
+            }
+            else
+                ans.push_back(arr[j]),j++;
+            k -=1 ;
+        }
+        
+        sort(ans.begin(),ans.end());
+        return ans;
+        
+        
+    }
+};
