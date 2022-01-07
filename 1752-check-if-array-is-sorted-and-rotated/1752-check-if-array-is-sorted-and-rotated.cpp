@@ -1,5 +1,6 @@
 class Solution {
 public:
+    // Just check floor points and consider array as circular array
     bool check(vector<int>& nums) {
         int n = nums.size() , p = 0;
         if(n == 1)
