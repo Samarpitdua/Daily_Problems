@@ -3,12 +3,16 @@ public:
     vector<string> findRelativeRanks(vector<int>& score) {
         int n = score.size();
         vector<string> ans ;
-        map<int,int> mp;
+        unordered_map<int,int> mp;
         vector<int> temp = score;
         sort(temp.begin() , temp.end() , greater<int>()) ;
         int ct = 1;
+        
+        //Storing positions in sorted order
         for(int i = 0 ;i < temp.size() ; i++)
             mp[temp[i]] = ct++;
+        
+        //Assigning Values
         for(int i = 0 ; i < n ; i++)
         {
             if(mp[score[i]] > 3)
