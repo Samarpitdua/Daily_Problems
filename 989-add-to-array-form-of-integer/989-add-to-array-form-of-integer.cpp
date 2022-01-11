@@ -14,7 +14,7 @@ public:
                 k /= 10;
             }
             temp = temp + num[i] + carry;
-            cout << temp << " ";
+       //     cout << temp << " ";
             if(temp > 9)
             {
                 carry = temp / 10;
