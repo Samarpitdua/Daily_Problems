@@ -2,8 +2,8 @@ class Solution {
 public:
     int subarraySum(vector<int>& nums, int k) {
         int n = nums.size() , ct = 0 , sum = 0 ,ans = 0;
-       unordered_map<int,int>mp;
-    //    mp[0]++;
+      unordered_map<int,int>mp;
+    
         for(int i = 0 ;i < n ;i++)
         {
             int p=0;
@@ -11,12 +11,10 @@ public:
             
             if(sum == k)
                 ans++;
-            if(mp.find(sum-k)!=mp.end())
+            if(mp[sum-k] > 0)
                 ans += mp[sum-k];
             mp[sum]++;
-            cout<<ans<<" ";
         }
-        cout<<"\n";
         return ans;
     }
 };
