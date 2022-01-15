@@ -6,7 +6,7 @@ public:
     
         for(int i = 0 ;i < n ;i++)
         {
-            int p=0;
+            int p = 0;
             sum += nums[i];
             
             if(sum == k)
