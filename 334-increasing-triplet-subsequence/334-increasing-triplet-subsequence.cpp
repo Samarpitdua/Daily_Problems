@@ -18,7 +18,7 @@ public:
                 mini2 = nums[i];
             
         }
-         cout<<"\n";
+        // cout<<"\n";
         return false;
         
     }
