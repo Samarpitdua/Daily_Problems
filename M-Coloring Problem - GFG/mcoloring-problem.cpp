@@ -27,6 +27,7 @@ bool solve(bool graph[101][101],vector<int>& colors ,int i , int m)
             colors[i] = color;
             if(solve(graph , colors , i + 1 , m))
             return true;
+            else
             colors[i] = -1;
         }
     }
