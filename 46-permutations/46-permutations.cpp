@@ -40,8 +40,8 @@ public:
         vector<vector<int>> ans;
         map<int , int> mp;
         vector<int> v;
-        solve(ans , v ,  nums , mp);
-       // solve2(ans , nums ,0);
+        //solve(ans , v ,  nums , mp);
+       solve2(ans , nums ,0);
         return ans;
         
     }
