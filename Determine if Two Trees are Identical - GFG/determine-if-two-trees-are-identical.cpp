@@ -45,8 +45,7 @@ class Solution
             return (r1 == r2);
         if(r1 -> data != r2 -> data)
             return false;
-        isIdentical(r1 -> left , r2 -> left);
-        isIdentical(r1 -> right , r2 -> right);
+        return isIdentical(r1 -> left , r2 -> left) and  isIdentical(r1 -> right , r2 -> right);
         //Your Code here
     }
 };
