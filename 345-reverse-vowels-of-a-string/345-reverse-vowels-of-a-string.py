@@ -3,7 +3,7 @@ class Solution:
         li = list(s)
         l = 0
         r = len(li) - 1
-        vowels = set(list("aeiouAEIOU"))
+        vowels = ("aeiouAEIOU")
         while l < r :
             if li[l] in vowels and li[r] in vowels:
                 li[l] , li[r] = li[r] , li[l]
