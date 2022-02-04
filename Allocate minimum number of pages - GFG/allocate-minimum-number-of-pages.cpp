@@ -62,7 +62,7 @@ class Solution
                 l = mid + 1;
                 continue;
             }
-            if(ct == m)
+            if(ct <= m)
             {
                 ans = mid;
                 r = mid ;
@@ -71,18 +71,15 @@ class Solution
             {
                 l = mid + 1 ;
             }
-            else
-            {
-                r = mid  ;
-            }
+            // else
+            // {
+            //     r = mid ;
+            // }
         }
         return ans;
         //code here
     }
 };
-//19
-// 2 9 12 18 22 39 42 47 56 59 66 73 80 80 82 86 88 91 99
-// 3
 
 // { Driver Code Starts.
 
