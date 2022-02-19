@@ -41,7 +41,23 @@ int solve(int cuts[] , int index , vector<vector<int>>& dp ,int length)
 class Solution{
   public:
     int cutRod(int cuts[], int n) {
-         vector<vector<int>> dp(n , vector<int>(n + 1 , -1));
+         vector<vector<int>> dp(n , vector<int>(n + 1 , 0));
+         for(int i = 0 ; i <= n ;i++)
+         {
+             dp[0][i] = cuts[0] * i;
+         }
+         for(int i = 1 ; i < n ; i++)
+         {
+             for(int j = 1 ; j <= n ;j++)
+             {
+                int take = INT_MIN;
+                int notTake = dp[i - 1][j];
+                if(i < j)
+                    take = cuts[i] + dp[i][j - i - 1];
+                dp[i][j] = max(take , notTake);
+             }
+         }
+         return dp[n - 1][n];
         return solve(cuts , n - 1 , dp , n);
         //code here
     }
