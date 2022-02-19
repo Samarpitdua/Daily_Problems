@@ -2,7 +2,7 @@ struct comp
 {
     bool operator()(pair<int,int> x , pair<int,int> y)
     {
-        return x.second < y.second;
+        return x.second > y.second;
     }
 };
 class Solution {
@@ -23,10 +23,14 @@ public:
         for(auto x : mp)
         {
             pq.push({x.first , x.second});
+            if(pq.size() > 2)
+                pq.pop();
         }
         for(auto x : mp2)
         {
-            pq2.push({x.first , x.second});       
+            pq2.push({x.first , x.second});
+            if(pq2.size() > 2)
+                pq2.pop();
         }
         int maxi2 = -1 , maxi4 = -1;
         int maxi1 = pq.top().first;
@@ -37,6 +41,10 @@ public:
         pq2.pop();
         if(!pq2.empty())
          maxi4 = pq2.top().first;
+        if(maxi2 != -1)
+        swap(maxi1 , maxi2);
+        if(maxi4 != -1)
+        swap(maxi3 , maxi4);
         int ans = 0;
         if(maxi1 != maxi3)
         {
