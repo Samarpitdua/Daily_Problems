@@ -23,12 +23,10 @@ public:
         for(auto x : mp)
         {
             pq.push({x.first , x.second});
-           
         }
         for(auto x : mp2)
         {
-            pq2.push({x.first , x.second});
-           
+            pq2.push({x.first , x.second});       
         }
         int maxi2 = -1 , maxi4 = -1;
         int maxi1 = pq.top().first;
@@ -42,33 +40,38 @@ public:
         int ans = 0;
         if(maxi1 != maxi3)
         {
-           // cout<<maxi1<<" "<<maxi3<<" ";
-            for(int i=0;i<n;i++)
+            for(int i = 0 ; i < n;i++)
             {
-                if(i&1 and nums[i]!=maxi1)ans++;
-                else if(i%2==0 and nums[i]!=maxi3)ans++;
+                if(i & 1 and nums[i] != maxi1)
+                    ans++;
+                else if(i % 2 == 0 and nums[i] != maxi3)
+                    ans++;
             }
-            //cout<<ans<<" ";
+         
             return ans;
         }
         else
         {
             int ct1 = 0 , ct2 = 0;
-            for(int i=0;i<n;i++)
+            for(int i = 0; i < n; i++)
             {
-                if(i&1 and nums[i]!=maxi1)ct1++;
-                else if(i%2==0 and nums[i]!=maxi4)ct2++;
+                if(i & 1 and nums[i] != maxi1)
+                    ct1++;
+                else if(i%2==0 and nums[i] != maxi4)
+                    ct2++;
             }
-            ans = ct1+ct2;
-            ct1=0 , ct2 = 0;
+            ans = ct1 + ct2;
+            ct1 = 0 , ct2 = 0;
             for(int i=0;i<n;i++)
             {
-                if(i&1 and nums[i]!=maxi2)ct1++;
-                else if(i%2==0 and nums[i]!=maxi3)ct2++;
+                if(i & 1 and nums[i] != maxi2)
+                    ct1++;
+                else if(i % 2 == 0 and nums[i] != maxi3)
+                    ct2++;
             }
             return min(ans , ct1 + ct2);
         }
-        //cout<<maxi1<<" "<<maxi2<<" "<<maxi3<<" "<<maxi4;
+    
         return 0;
         
     }
