@@ -16,7 +16,7 @@ public:
             }
             else if(in[i][1] >= start and in[i][1] <= end)
                 continue;
-            else if(in[i][0] > end or in[i][1] > end)
+            else
             {
                 ans++;
                 start = in[i][0];
