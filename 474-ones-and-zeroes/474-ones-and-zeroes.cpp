@@ -31,7 +31,7 @@ int solve(vector<string>& strs , int m , int n , vector<vector<vector<int>>>& dp
 }
     int findMaxForm(vector<string>& strs, int m, int n) {
         int sz = strs.size();
-        vector<vector<vector<int>>> dp(sz + 1, vector<vector<int>>(m + 1 , vector<int>(n + 1 , -1)));
+        vector<vector<vector<int>>> dp(sz + 1 , vector<vector<int>>(m + 1 , vector<int>(n + 1 , -1)));
         return solve(strs , m , n , dp , sz - 1);
     }
 };
