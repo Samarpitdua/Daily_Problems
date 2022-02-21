@@ -2,8 +2,15 @@ class Solution {
 public:
 int solve(vector<string>& strs , int m , int n , vector<vector<vector<int>>>& dp , int index)
 {
-    if(index < 0 )
-        return 0;
+    if(index == 0)
+    {
+        int z = count(strs[index].begin() , strs[index].end() , '0');
+        int o = strs[index].size() - z;
+        if( (m - z) >= 0 and (n - o) >= 0)
+            return 1;
+        else
+            return 0;
+    }
     if(m == 0 && n == 0)
         return 0;
     
