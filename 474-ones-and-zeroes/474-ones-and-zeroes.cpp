@@ -2,6 +2,10 @@ class Solution {
 public:
 int solve(vector<string>& strs , int m , int n , vector<vector<vector<int>>>& dp , int index)
 {
+    
+    if(m == 0 and n == 0)
+        return 0;
+    
     if(index == 0)
     {
         int z = count(strs[index].begin() , strs[index].end() , '0');
@@ -11,8 +15,6 @@ int solve(vector<string>& strs , int m , int n , vector<vector<vector<int>>>& dp
         else
             return 0;
     }
-    if(m == 0 && n == 0)
-        return 0;
     
     if(dp[index][m][n] != -1)
         return dp[index][m][n];
