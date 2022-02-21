@@ -23,7 +23,7 @@ int solve(vector<string>& strs , int m , int n , vector<vector<vector<int>>>& dp
         int o = strs[index].size() - z;
     
         int take = INT_MIN;
-        if((m - z) >= 0 && (n - o) >= 0)
+        if((m - z) >= 0 and (n - o) >= 0)
             take = 1 + solve(strs , m - z, n - o, dp , index - 1);
         int notTake = solve(strs , m , n , dp , index - 1);
         return dp[index][m][n] = max(take , notTake);
