@@ -1,5 +1,5 @@
 # Count pairs in array divisible by K
-## Medium 
+##  Medium 
 <div class="problem-statement">
                 <p></p><p><span style="font-size:18px">Given an array&nbsp;<strong>A[]&nbsp;</strong>and positive integer&nbsp;<strong>K</strong>, the task is to count total number of pairs in the array whose sum is divisible by&nbsp;<strong>K</strong>.</span></p>
 
