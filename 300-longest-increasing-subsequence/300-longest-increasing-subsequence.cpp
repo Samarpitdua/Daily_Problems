@@ -1,19 +1,19 @@
 class Solution {
 public:
+    //nlogn approach using binary search
     int lengthOfLIS(vector<int>& nums) {
         int ans = 0 , n = nums.size();
-        vector<int> dp(n , 1);
-        dp[0] = 1;
-        for(int i = 1 ; i < n ;i++)
+        vector<int> dp;
+        for(int i = 0 ; i < n ;i++)
         {
-            for(int j = 0 ; j < i ;j++)
+            auto x = lower_bound(dp.begin() , dp.end() , nums[i]);
+            if(x == dp.end())
+                dp.push_back(nums[i]);
+            else
             {
-                if(nums[i] > nums[j])
-                {
-                    dp[i] = max(1 + dp[j] , dp[i]);
-                }
+                *x = nums[i];
             }
         }
-        return *max_element(dp.begin() , dp.end());
+        return dp.size();
     }
 };
