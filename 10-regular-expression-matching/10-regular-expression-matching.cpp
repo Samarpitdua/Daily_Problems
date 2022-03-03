@@ -31,7 +31,6 @@ public:
                     b = solve(s , p , i + 1 , j , dp);
                 }
             }
-            // cout<<"yy"<<a<<" "<<b<<endl;
             return dp[i][j] = a || b;
         }
         else if(p[j+1]=='*')
@@ -50,10 +49,6 @@ public:
                  
                 a = solve(s , p , i + 1 , j + 1 , dp);
             }
-            
-            else if((j+1)<p.size() and p[j+1]=='*')
-                b = solve(s , p , i , j + 1 , dp);
-            
             return dp[i][j] = a or b;
         }
     }
