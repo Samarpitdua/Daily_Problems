@@ -31,22 +31,17 @@ public:
             {
                 if(temp==NULL)
                 {
-                  //  cout<<"y";
-                    //ans = temp;
                     temp=new ListNode(head->val);
-                    cout<<temp->val<<endl;
                     ans = temp;
                     head=head->next;
                 }
                 else
                 {
-                    //cout<<"z";
                     temp->next=new ListNode(head->val);
                     temp=temp->next;
                     head=head->next;
                 }
             }
-            //cout<<temp->val<<" ";
         }
         return ans;
     }
