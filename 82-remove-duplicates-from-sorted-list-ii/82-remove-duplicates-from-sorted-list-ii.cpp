@@ -10,22 +10,45 @@
  */
 class Solution {
 public:
-    ListNode* deleteDuplicates(ListNode* head) {
+    ListNode* deleteDuplicates(ListNode* head)
+    {
         if (!head) return 0;
         if (!head->next) return head;
-        
-        int val = head->val;
-        ListNode* p = head->next;
-        
-        if (p->val != val) 
+        ListNode * ans = NULL ,*temp = NULL;
+        while(1)
         {
-            head->next = deleteDuplicates(p);
-            return head;
-        } else
-        {
-            while (p && p->val == val) p = p->next;
-            return deleteDuplicates(p);
+            if(!head)
+                break;
+            if(head->next and head->val == head->next->val)
+            {
+                while(head->next and head->val == head->next->val)
+                {
+                    head=head->next;
+                }
+                head=head->next;
+            }
+            else
+            {
+                if(temp==NULL)
+                {
+                  //  cout<<"y";
+                    //ans = temp;
+                    temp=new ListNode(head->val);
+                    cout<<temp->val<<endl;
+                    ans = temp;
+                    head=head->next;
+                }
+                else
+                {
+                    //cout<<"z";
+                    temp->next=new ListNode(head->val);
+                    temp=temp->next;
+                    head=head->next;
+                }
+            }
+            //cout<<temp->val<<" ";
         }
+        return ans;
     }
 };
 // [1,2,3,3,4,4,5]
