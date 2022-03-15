@@ -6,10 +6,7 @@ public:
         {
             for(int j = 0 ; j < matrix[0].size() ;j++)
             {
-                if(i != j)
                     ans[j][i] = matrix[i][j];
-                else
-                    ans[i][j] = matrix[i][j];
             }
         }
         return ans;
