@@ -5,19 +5,16 @@ public:
         set<int> st;
         for(int i = 0 ; i < nums.size() ;i++)
         {
-            if(nums[i] != key)
-                continue;
-            int l = k , m = k ;
-            for(int j = i ; j >= 0 and l >= 0 ; j-- , l--)
+            for(int j = 0 ; j < nums.size() ; j++)
             {
-                st.insert(j);
+                if(nums[j] == key and abs(i - j) <= k)
+                {
+                    ans.push_back(i);
+                    break;
+                }
             }
-            for(int j = i ; j < nums.size() and m >= 0 ; m-- , j++)
-                st.insert(j);
             
         }
-        for(auto x : st)
-            ans.push_back(x);
         return ans;
     }
 };
