@@ -4,7 +4,6 @@ public:
         int n = nums.size();
         if(n < 3)
             return 0;
-        vector<int> dp(n + 1 , 0);
         int ans = 0 , ct = 0;
         
         int temp = nums[1] - nums[0];
@@ -19,9 +18,7 @@ public:
                 temp = cur_diff;
             }
                 ans += ct;
-        }
-        // for(auto x : dp)
-        //     ans += x;
+        } 
         return ans;
     }
 };
