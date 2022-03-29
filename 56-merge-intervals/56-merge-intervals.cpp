@@ -2,39 +2,38 @@ class Solution {
 public:
     vector<vector<int>> merge(vector<vector<int>>& intervals) {
         sort(intervals.begin(),intervals.end());
-        int temp=-1,ans1=-1;
+        
+        int temp1 = -1 , temp2;
         vector<vector<int>> ans;
-        for(auto x:intervals)
+        
+        for(auto x : intervals)
         {
-            int y = x[0];
-            int z = x[1];
-            if(temp == -1)
+            vector<int> tmp;
+            if(temp1 == -1)
             {
-                ans1 = y;
-                temp = z ;
-                continue;
-            }
-            else if(y>temp)
-            {
-                vector<int>v(2);
-                v[0]=ans1;
-                v[1]=temp;
-                ans.push_back(v);
-                ans1=y;
-                temp=z;
-                continue;
+                temp1 = x[0];
+                temp2 = x[1];
             }
             else
             {
-                temp = max(z,temp);
-                continue;
+                if(x[0] > temp2)
+                {
+                    tmp.push_back(temp1);
+                    tmp.push_back(temp2);
+                    ans.push_back(tmp);
+                    temp1 = x[0];
+                    temp2 = x[1];
+                }
+                else
+                {
+                    temp2 = max(temp2 , x[1]);
+                }
             }
-                
         }
         vector<int>v(2);
-                v[0]=ans1;
-                v[1]=temp;
-                ans.push_back(v);
+        v[0] = temp1;
+        v[1] = temp2;
+        ans.push_back(v);
         return ans ;
         
     }
