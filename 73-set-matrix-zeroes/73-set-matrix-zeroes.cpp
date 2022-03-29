@@ -3,46 +3,58 @@ public:
     //This is an in place answer we will take first row and first column as an additional aarray and store 0 in them if any of their row or column
     //have zro in them 
     void setZeroes(vector<vector<int>>& a) {
-       
-        int rows = a.size();
-        bool col = false , row = false;
-        int cols = a[0].size();
-        for(int i = 0 ; i < rows ; i++)
-        {
-            if(a[i][0] == 0)
-                col = true;
-        }
-        for(int i = 0 ; i < cols ; i++)
+       int m = a.size() , n = a[0].size();
+        bool row = false , col = false;
+    
+        for(int i = 0 ; i < n ; i++)
         {
             if(a[0][i] == 0)
+                col = true;
+        }
+        
+        for(int i = 0 ; i < m ; i++)
+        {
+            if(a[i][0] == 0)
                 row = true;
         }
-        for(int i=1;i<rows;i++)
+        
+        for(int i = 1 ; i < m ; i++)
         {
-            for(int j=1;j<cols;j++)
+            for(int j = 1 ; j < n ; j++)
             {
                 if(a[i][j] == 0)
                 {
-                    a[0][j] = 0;
                     a[i][0] = 0;
+                    a[0][j] = 0;
                 }
             }
         }
-        for(int i = rows - 1 ; i >= 0 ; i--)
+        
+        for(int i = m - 1 ; i > 0 ; i--)
         {
-            for(int j = cols - 1 ; j >= 0 ; j--)
+            for(int j = n - 1 ; j > 0 ; j--)
             {
-                if(i == 0 and row)
+                if(a[i][0] == 0)
                 {
                     a[i][j] = 0;
                 }
-                if(j == 0 and col)
+                if(a[0][j] == 0)
+                {
                     a[i][j] = 0;
-                if(a[0][j] == 0 or a[i][0] == 0)
-                    a[i][j] = 0;
+                }
             }
         }
+        
         if(col)
-            a[0][0] = 0;
+        {
+            for(int i = 0 ; i < n ; i++)
+                a[0][i] = 0;
+        }
+        if(row)
+        {
+            for(int i = 0 ; i < m ; i++)
+                a[i][0] = 0;
+        }
+        
     }
 };
