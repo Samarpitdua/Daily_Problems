@@ -33,7 +33,7 @@ class Solution{
         else
         {
             v[k++] = arr2[j++];
-            ct += (mid - i - left + 1);
+            ct += (mid -( i + left) + 1);
         }
     }
     while(i < n1)
