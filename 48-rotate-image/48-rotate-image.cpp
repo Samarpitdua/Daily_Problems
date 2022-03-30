@@ -7,9 +7,6 @@ public:
         {
             for(int j = 0 ; j < i; j++)
             {
-                if(i == j)
-                    continue;
-                else
                     swap(a[i][j] , a[j][i]);
             }
         }
