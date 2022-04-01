@@ -1,31 +1,29 @@
 class Solution {
 public:
-    void solve(vector<int> v ,int n, int i, int target , vector<vector<int>>& ans, vector<int> temp , int sum )
+    void solve(vector<int>& candy , int n , vector<int> temp , vector<vector<int>>& ans , int target , int index , int sum)
     {
-        if(sum == target)
+        if(index == n)
         {
-            ans.push_back(temp);
+            if(target == 0)
+            {
+                ans.push_back(temp);
+            }
             return;
         }
+        if(candy[index] <= target){
+            temp.push_back(candy[index]);
+            solve(candy , n , temp , ans , target - candy[index] , index , sum);
+          //  solve(candy , n , temp , ans , target - candy[index] , index + 1 , sum);
+             temp.pop_back();
+        }
+        solve(candy , n , temp , ans , target , index + 1 , sum);
         
-        if(sum > target or i >= n)
-        {
-            return;
-        }
-        // take it
-        temp.push_back(v[i]);
-        sum += v[i];
-        solve(v , n , i , target , ans , temp , sum);
-        //ignore it 
-        temp.pop_back();
-        sum -= v[i];
-        solve(v , n , i + 1 , target , ans , temp , sum);
     }
     vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
         
         vector<vector<int>> ans;
         vector<int> temp;
-        solve(candidates , candidates.size() , 0 , target , ans , temp , 0);
+        solve(candidates , candidates.size() , temp ,ans , target , 0 , 0);
         return ans;
         
     }
