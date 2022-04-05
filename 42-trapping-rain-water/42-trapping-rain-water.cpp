@@ -1,29 +1,34 @@
 class Solution {
 public:
-    
-    //In below approach we solved the question in time comp. : O(n) and space complexity : O(n)
+    //2nd approach
+    //Time complexity : O(n)
+    //Space complexity : o(1)
+    //We will use two pointer approach
     int trap(vector<int>& height) {
         int ans = 0 , n = height.size() , maxil = 0 , maxir = 0;
-        vector<int> maxL(n , 0) , maxR(n , 0);
-        for(int i = 0 ; i < height.size() ;i++)
+        int left = 0 , right = n - 1;
+        while(left < right)
         {
-            maxL[i] = maxil;
-            if(height[i] > maxil)
-                maxil = height[i];
-                
-        }
-        for(int i = n - 1 ; i >= 0 ;i--)
-        {
-            maxR[i] = maxir;
-            if(height[i] > maxir)
-                maxir = height[i];
-                
-        }
-        for(int i = 0 ; i < n ;i++)
-        {
-            int temp = min(maxL[i] , maxR[i]) - height[i];
-            if(temp >= 0)
-                ans += temp;
+            if(height[left] <= height[right])
+            {
+                if(height[left] < maxil)
+                {
+                    ans += maxil - height[left];
+                }
+                else
+                    maxil = height[left];
+                left++;
+            }
+            else
+            {
+                if(height[right] < maxir)
+                {
+                    ans += maxir - height[right];
+                }
+                else
+                    maxir = height[right];
+                right--;
+            }
         }
         return ans;
         
