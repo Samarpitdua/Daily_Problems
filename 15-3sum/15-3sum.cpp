@@ -4,36 +4,39 @@ public:
         int n = nums.size();
         vector<vector<int>> ans;
         sort(nums.begin() , nums.end());
-        int start = 0;
-        
-        for(int i = 0 ; i < n ;i++)
+        if(n < 3)
+            return ans;
+        for(int i = 0 ; i < n - 2 ; i++)
         {
-            if(nums[i] > 0)
+            while(i < n - 2 and i != 0 and nums[i] == nums[i - 1])
+                i++;
+            if(i >= n - 2)
                 break;
-            if(i != 0 and nums[i - 1] == nums[i])
-                continue;
-            
-            int left = i + 1 , right = n - 1;
-            while(left < right)
+            int j = i + 1 , k = n - 1;
+             int sum = nums[i];
+            while(j < k)
             {
-                int sum = nums[i] + nums[left] + nums[right];
-                if(sum < 0)
-                    left++;
-                else if(sum > 0)
-                    right--;
-                else
+                int sum2 = nums[j] + nums[k];
+               
+                if((sum + sum2) == 0)
                 {
-                    ans.push_back({nums[i] , nums[left] , nums[right]});  
-                    int val1 = nums[left] , val2 = nums[right];
-                    while(left < right and nums[left] == val1)
-                    {
-                        left++;
-                    }
-                    while(left , right and nums[right] == val2)
-                        right--;
-                }
-                
+                   // cout<<i<<" "<<j<<" "<<k<<endl;
+                    vector<int> temp;
+                    temp.push_back(nums[i]);
+                    temp.push_back(nums[j]);
+                    temp.push_back(nums[k]);
+                    ans.push_back(temp);
                     
+                    int x = nums[j] , y = nums[k];
+                    while(j < k and nums[j] == x)
+                            j++;
+                    while(j < k and nums[k] == y)
+                        k--;
+                }
+                else if((sum2 + sum) < 0)
+                    j++;
+                else
+                    k--;
             }
         }
         return ans;
