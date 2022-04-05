@@ -26,8 +26,8 @@ public:
         {
             root2 = root1 -> next;
             Node* copy = new Node(root1 -> val);
+            copy-> next = root2;
             root1 -> next = copy;
-            copy -> next = root2;
             root1 = root2;
         }
         
