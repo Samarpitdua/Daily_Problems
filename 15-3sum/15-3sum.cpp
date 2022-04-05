@@ -12,15 +12,16 @@ public:
                 i++;
             if(i >= n - 2)
                 break;
-            int j = i + 1 , k = n - 1;
              int sum = nums[i];
+            if(sum > 0)
+                break;
+             int j = i + 1 , k = n - 1;
             while(j < k)
             {
                 int sum2 = nums[j] + nums[k];
                
                 if((sum + sum2) == 0)
                 {
-                   // cout<<i<<" "<<j<<" "<<k<<endl;
                     vector<int> temp;
                     temp.push_back(nums[i]);
                     temp.push_back(nums[j]);
