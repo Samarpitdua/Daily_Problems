@@ -1,5 +1,7 @@
 class Solution {
 public:
+    
+    //In below approach we solved the question in time comp. : O(n) and space complexity : O(n)
     int trap(vector<int>& height) {
         int ans = 0 , n = height.size() , maxil = 0 , maxir = 0;
         vector<int> maxL(n , 0) , maxR(n , 0);
