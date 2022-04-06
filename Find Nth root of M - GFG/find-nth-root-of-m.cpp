@@ -42,15 +42,6 @@ class Solution{
 	        else
 	           ans = low ,  low = mid + 1;
 	    }
-	    low = ans;
-	    ans = 1;
-	    //cout<<low<<" ";
-	    for(int i = 0 ; i < n ;i++)
-	    {
-	        ans *= low;
-	    }
-	    if(ans == m )
-	        return low;
 	    return -1;
 	    // Code here.
 	}  
