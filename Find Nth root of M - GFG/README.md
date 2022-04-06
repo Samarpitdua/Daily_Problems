@@ -1,5 +1,5 @@
 # Find Nth root of M
-## Easy 
+##  Easy 
 <div class="problem-statement">
                 <p></p><p><span style="font-size:18px">You are given 2 numbers <strong>(n&nbsp;, m)</strong>; the task is to find <strong><sup>n</sup>√m</strong>&nbsp;(n<sup>th</sup> root of m).</span><br>
 &nbsp;</p>
