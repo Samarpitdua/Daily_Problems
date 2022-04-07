@@ -10,58 +10,51 @@ using namespace std;
 
 class Solution{
     public:
-    bool isValid(int n , int row , int col ,vector<vector<int>>& m)
+    bool isValid(int i , int j , vector<vector<int>> &m , int n)
     {
-        //cout<<row<<" "<<col<<endl;
-        return (row < n and row >= 0 and col < n and col >= 0 and m[row][col]) ;
+        return (i >= 0 and i < n and j >= 0 and j < n and m[i][j] != 0);
     }
-    void solve(vector<vector<int>> &m , int n , string& s, vector<string>& ans , int rows , int cols)
+    void findPath(vector<vector<int>> &m , int n , string temp , vector<string>& ans , int i , int j)
     {
-        if(m[rows][cols] == 0)
-        return;
-        if((rows == n - 1) and (cols == n - 1))
+        if(i == n - 1 and j == n - 1)
         {
-          //  cout<<"hi";
-            ans.push_back(s);
+            ans.push_back(temp);
             return;
         }
-                if(isValid(n , rows + 1 , cols , m ))
-                {
-                    m[rows][cols] = 0;
-                    s += 'D';
-                    solve(m , n , s , ans , rows + 1 , cols);
-                    m[rows][cols] = 1;
-                    s.pop_back();
-                }
-                if(isValid(n , rows , cols + 1 , m ))
-                {
-                    m[rows][cols] = 0;
-                    s += 'R';
-                    solve(m , n , s , ans , rows , cols + 1);
-                    m[rows][cols] = 1;
-                    s.pop_back();
-                }
-                if(isValid(n , rows - 1 , cols , m))
-                {
-                    m[rows][cols] = 0;
-                    s += 'U';
-                    solve(m , n , s , ans , rows - 1 , cols);
-                    m[rows][cols] = 1;
-                    s.pop_back();
-                }
-                if(isValid(n , rows , cols - 1 , m))
-                {
-                    m[rows][cols] = 0;
-                    s += 'L';
-                    solve(m , n , s , ans , rows , cols - 1);
-                    m[rows][cols] = 1;
-                    s.pop_back();
-                }
+        if(isValid(i + 1 , j , m , n))
+        {
+            m[i + 1][j] = 0;
+            findPath(m , n , temp + "D" , ans , i + 1 , j);
+            m[i + 1][j] = 1;
+        }
+        if(isValid(i - 1 , j , m , n))
+        {
+            m[i - 1][j] = 0;
+            findPath(m , n , temp + "U" , ans , i - 1 , j);    
+            m[i - 1][j] = 1;
+        }
+        if(isValid(i , j + 1 , m , n))
+        {
+            m[i][j + 1] = 0;
+            findPath(m , n , temp + "R" , ans , i , j + 1); 
+            m[i][j + 1] = 1;
+        }
+        if(isValid(i , j - 1 , m , n))
+        {
+            m[i][j - 1] = 0;
+            findPath(m , n , temp + "L" , ans , i , j - 1);  
+            m[i][j - 1] = 1;
+        }
+        
     }
+    
     vector<string> findPath(vector<vector<int>> &m, int n) {
         vector<string> ans;
-        string s = "";
-        solve(m , n , s , ans , 0 , 0);
+        string temp = "";
+        if(m[0][0] == 0)
+            return ans;
+        m[0][0] = 0;
+        findPath(m , n , temp , ans , 0 , 0);
         return ans;
         // Your code goes here
     }
