@@ -17,7 +17,7 @@ public:
     }
     
     //O(n) space
-    void solve(vector<vector<int>>& ans , vector<int>& v , vector<int>& nums , map<int , int> mp)
+    void solve(vector<vector<int>>& ans , vector<int> v , vector<int>& nums , map<int , int> mp)
     {
         if(v.size() == nums.size())
         {
