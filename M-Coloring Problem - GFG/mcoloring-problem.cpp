@@ -6,38 +6,36 @@ using namespace std;
  // } Driver Code Ends
 //Function to determine if graph can be coloured with at most M colours such
 //that no two adjacent vertices of graph are coloured with same colour.
-bool isSafe(bool graph[101][101] , int color , int vertex , vector<int>& colors)
+bool isValid(bool graph[101][101] , int color , int ind  , vector<int>& vertice)
 {
-        for(int k = 0 ; k < 101 ;k++)
-        {
-            if(graph[vertex][k] == 1 and colors[k] == color)
+    for(int i=0;i<101;i++)
+    {
+        if(graph[ind][i] == 1 and vertice[i] == color)
             return false;
-        }
-    
+    }
     return true;
 }
-bool solve(bool graph[101][101],vector<int>& colors ,int i , int m)
+bool solve(bool graph[101][101] , int m , vector<int>& vertice , int ind)
 {
-    if(i >= colors.size())
-    return true;
-    for(int color = 0 ; color <  m ;color++)
+    if(ind >= vertice.size())
+        return true;
+    for(int color = 0 ; color < m ;color++)
     {
-        if(isSafe(graph , color , i , colors))
+        if(isValid(graph , color , ind , vertice))
         {
-            colors[i] = color;
-            if(solve(graph , colors , i + 1 , m))
-            return true;
-            else
-            colors[i] = -1;
+            vertice[ind] = color;
+            if(solve(graph , m , vertice , ind + 1))
+                return true;
+            vertice[ind] = -1;
         }
     }
     return false;
 }
+
 bool graphColoring(bool graph[101][101], int m, int V)
 {
-    vector<int> colors(V , -1);
-    bool ans = solve(graph , colors , 0 , m);
-    return ans;
+    vector<int> vertice(V , -1);
+    return solve(graph , m , vertice , 0);
     // your code here
 }
 
