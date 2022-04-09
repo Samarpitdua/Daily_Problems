@@ -11,8 +11,7 @@ public:
         for(int i = ind ; i < nums.size() ;i++)
         {
             swap(nums[i] , nums[ind]);
-            solve2(ans , nums ,ind + 1);
-            //swap(nums[i] , nums[ind]);
+            solve2(ans , nums , ind + 1);
         } 
     }
     
@@ -21,7 +20,6 @@ public:
     {
         if(v.size() == nums.size())
         {
-            //cout<<"hi";
             ans.push_back(v);
             return ;
         }
@@ -41,8 +39,8 @@ public:
         vector<vector<int>> ans;
         map<int , int> mp;
         vector<int> v;
-        solve(ans , v ,  nums , mp);
-       //solve2(ans , nums ,0);
+       // solve(ans , v ,  nums , mp);
+       solve2(ans , nums ,0);
         return ans;
         
     }
