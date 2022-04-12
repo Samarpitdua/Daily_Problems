@@ -10,8 +10,6 @@ public:
     {
        root = new Node();
     }
-     
-    
     void insert(string word) {
         Node *temp = root;
         for(int i = 0 ; i < word.size() ; i++)
@@ -32,9 +30,7 @@ public:
         {
             if(temp -> link[word[i] - 'a'] == NULL)
                 return false;
-            else
-                temp = temp -> link[word[i] - 'a'];
-                
+            temp = temp -> link[word[i] - 'a'];    
         }
         return temp -> flag;
     }
@@ -45,8 +41,7 @@ public:
         {
             if(temp -> link[prefix[i] - 'a'] == NULL)
                 return false;
-            else
-                temp = temp -> link[prefix[i] - 'a'];
+            temp = temp -> link[prefix[i] - 'a'];
         }
         return true;
     }
