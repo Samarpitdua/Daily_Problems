@@ -32,7 +32,6 @@ public:
                 }
             }
         }
-         cout<<q.size()<<" ";
         while(!q.empty())
         {
             int p = 0;
