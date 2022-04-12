@@ -11,7 +11,6 @@ public:
             if(st.empty())
             {
                 v[i] = n;
-               // cout<<v[i]<<endl;
                 st.push( { heights[i] , i } );
             }
             else
@@ -31,9 +30,8 @@ public:
             }
             
         }
-       // for(auto x : v )cout<< x << " ";
-      //  reverse(v.begin() , v.end());
-        while(!st.empty()) st.pop();
+        while(!st.empty()) 
+            st.pop();
         for(int i = 0; i < n; i++)
         {
             if(st.empty())
@@ -58,16 +56,12 @@ public:
             }
             
         }
-        int maxi = 0;
+        int ans = 0;
         for(int i = 0; i < n ;i++)
         {
-           // cout<<v[i]<<" "<<v2[i]<<" ";
-            int temp = abs( ( v[i] - v2[i] ) - 1);
-          //  cout<< temp << " ";
-            temp *= heights[i];
-            maxi = max(maxi , temp);
-           // cout<<temp<<"\n";
+            int temp = abs((v[i] - v2[i]) - 1) * heights[i];;
+            ans = max(ans , temp);
         }
-        return maxi;    
+        return ans;    
     }
 };
