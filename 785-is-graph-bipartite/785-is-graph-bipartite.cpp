@@ -1,22 +1,20 @@
 class Solution {
 public:
-    bool check(vector<vector<int>>& graph ,vector<int>& vis , vector<int>& color , int col , int node)
+    bool solve(vector<vector<int>>& graph , vector<int>& vis , vector<int>& colors , int node  , int color)
     {
-        if(color[node] == -1)
+        
+        colors[node] = color;
+        vis[node] = 1;
+        for(auto child : graph[node])
         {
-            color[node] = col;
-        }
-        for(auto x : graph[node])
-        {
-            if(vis[x])
+            if(!vis[child])
             {
-                if(color[node] == color[x])
+                if(!solve(graph , vis , colors , child , 1 - color))
                     return false;
             }
             else
             {
-                vis[x]=1;
-                if(check(graph , vis , color ,1 - col , x) == false)
+                if(color == colors[child])
                     return false;
             }
         }
@@ -25,14 +23,12 @@ public:
     bool isBipartite(vector<vector<int>>& graph) {
         int n = graph.size();
         vector<int> vis(n , 0);
-        vector<int> color(n , -1);
-        
+        vector<int> colors(n , -1);
         for(int i = 0 ; i < n ;i++)
         {
             if(!vis[i])
             {
-                vis[i]=1;
-                if(!check(graph , vis, color , 0 , i))
+                if(!solve(graph , vis , colors , i , 0))
                     return false;
             }
         }
