@@ -1,5 +1,34 @@
 class Solution {
 public:
+    bool solve2(vector<vector<int>>& graph , vector<int>& vis , vector<int>& colors , int node  , int color)
+    {
+        queue<int> q;
+        q.push(node);
+        vis[node] = 1;
+        colors[node] = color;
+        while(!q.empty())
+        {
+            int temp = q.front();
+            int sz = q.size();
+            q.pop();
+            for(auto child : graph[temp])
+            {
+                if(!vis[child])
+                {
+                    vis[child] = 1;
+                    colors[child] = 1 - colors[temp];
+                    q.push(child);           
+                }
+                else
+                {
+                    if(colors[temp] == colors[child])
+                        return false;
+                }
+            }
+            
+        }
+        return true;
+    }
     bool solve(vector<vector<int>>& graph , vector<int>& vis , vector<int>& colors , int node  , int color)
     {
         
@@ -28,7 +57,7 @@ public:
         {
             if(!vis[i])
             {
-                if(!solve(graph , vis , colors , i , 0))
+                if(!solve2(graph , vis , colors , i , 0))
                     return false;
             }
         }
