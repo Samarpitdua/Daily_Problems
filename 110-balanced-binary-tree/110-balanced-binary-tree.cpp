@@ -17,16 +17,17 @@ public:
             return 0;
         int l = solve(root -> left);
         int r = solve(root -> right);
+        if(l == -1 or r == -1)
+            return -1;
         if(abs(l - r) > 1)
-            return 100000;
+            return -1;
         else
             return 1 + max(l , r);
         
     }
     bool isBalanced(TreeNode* root) {
-            int ans = solve(root);
-            if(ans < 1000)
-                return true;
+        if(solve(root) == -1)
             return false;
+        return true;
     }
 };
