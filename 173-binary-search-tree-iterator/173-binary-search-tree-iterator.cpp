@@ -9,6 +9,8 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+// Kepp putting left until null.when next function is called pop element from stack and if it has right put it into stack.
+//is stack not empty hasnext return true else it will return false;
 class BSTIterator {
 public:
     stack <TreeNode*> st;
