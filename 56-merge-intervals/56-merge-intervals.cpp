@@ -1,20 +1,13 @@
 class Solution {
 public:
     vector<vector<int>> merge(vector<vector<int>>& intervals) {
-        sort(intervals.begin(),intervals.end());
+        sort(intervals.begin() , intervals.end());
         
-        int temp1 = -1 , temp2;
+        int temp1 = intervals[0][0] , temp2 = intervals[0][1];
         vector<vector<int>> ans;
-        
         for(auto x : intervals)
         {
             vector<int> tmp;
-            if(temp1 == -1)
-            {
-                temp1 = x[0];
-                temp2 = x[1];
-            }
-            else
             {
                 if(x[0] > temp2)
                 {
@@ -35,6 +28,5 @@ public:
         v[1] = temp2;
         ans.push_back(v);
         return ans ;
-        
     }
 };
