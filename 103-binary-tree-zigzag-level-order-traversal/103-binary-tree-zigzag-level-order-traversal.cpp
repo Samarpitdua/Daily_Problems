@@ -15,13 +15,14 @@ public:
         vector<vector<int>> v;
         vector<int> ans;
         queue<TreeNode*> q;
+        
         if(!root)
             return v;
         q.push(root);
         int h = 0;
+        
         while(!q.empty())
         {
-            ans.clear();
             int sz = q.size();
             for(int i = 0; i < sz;i++)
             {
@@ -33,10 +34,11 @@ public:
                     q.push(temp -> right);
                 q.pop();
             }
-            if(h == 1)
-            reverse(ans.begin() , ans.end());
+            if(h)
+                reverse(ans.begin() , ans.end());
             h ^= 1;
             v.push_back(ans);
+            ans.clear();
         }
         return v;
     }
