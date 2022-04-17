@@ -127,22 +127,32 @@ struct Node
  */
 
 //Function to return a list containing elements of left view of the binary tree.
-void preorder(Node* root , vector<int>& ans , int level)
+void levelorder(Node* root , vector<int>& ans)
 {
     if(!root)
         return;
-    if(ans.size() == level)
+    queue<Node*> q;
+    q.push(root);
+    while(!q.empty())
     {
-        ans.push_back(root -> data);
+        int sz = q.size() , p = 1;
+        while(sz--){
+            Node* temp = q.front();
+            q.pop();
+            if(p)
+                ans.push_back(temp -> data) , p = 0;
+            if(temp -> left)
+                q.push(temp -> left);
+            if(temp -> right)
+                q.push(temp -> right);
+            
+        }
     }
-    preorder(root -> left , ans , level + 1);
-    preorder(root -> right , ans , level + 1);
 }
 vector<int> leftView(Node *root)
 {
-    //recursive approach
     vector<int> ans;
-    preorder(root , ans , 0);
+    levelorder(root , ans);
     return ans;
    
 }
