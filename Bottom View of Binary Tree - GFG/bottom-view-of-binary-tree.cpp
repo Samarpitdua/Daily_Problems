@@ -96,13 +96,12 @@ Node* buildTree(string str)
 class Solution {
   public:
     vector <int> bottomView(Node *root) {
-        map<int , int> mp;
         vector<int> ans;
-        queue<pair<Node* , int>> q;
         if(!root)
             return ans;
+        queue<pair<Node* , int>> q;
         q.push({root , 0});
-        int level = 0;
+        map<int , int> mp;
         while(!q.empty())
         {
             int sz = q.size();
@@ -110,17 +109,12 @@ class Solution {
             {
                 Node* temp = q.front().first;
                 int val = q.front().second;
-                mp[val] = temp -> data;
-               // cout<<q.front().second<<" ";
                 q.pop();
+                    mp[val] = temp -> data;
                 if(temp -> left)
-                {
                     q.push({temp -> left , val - 1});
-                }
                 if(temp -> right)
-                {
                     q.push({temp -> right , val + 1});
-                }
             }
         }
         for(auto x : mp)
