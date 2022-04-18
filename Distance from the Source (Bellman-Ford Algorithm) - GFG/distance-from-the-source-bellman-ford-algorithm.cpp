@@ -13,10 +13,9 @@ class Solution{
     *   V: number of vertices
     */
     vector <int> bellman_ford(int v, vector<vector<int>> adj, int s) {
-        int n = adj.size();
         vector<int> ans(v , 100000000);
         ans[s] = 0;
-        for(int i = 1 ;  i <= v - 1 ;i++)
+        for(int i = 0 ;  i < v - 1 ;i++)
         {
             for(auto x : adj)
             {
