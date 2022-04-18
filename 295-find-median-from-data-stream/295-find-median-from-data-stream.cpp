@@ -37,7 +37,6 @@ public:
             return right.top();
         else
         {
-            cout<<left.top()<<" "<<right.top()<<"\n";
             double ans = (left.top() + right.top()) / double(2);
             return ans;
         }
