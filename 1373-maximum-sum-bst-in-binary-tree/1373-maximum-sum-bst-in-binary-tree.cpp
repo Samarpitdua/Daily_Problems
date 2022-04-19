@@ -15,17 +15,19 @@ public:
           bst b = {true , INT_MIN , INT_MAX , 0};
           return b;
       }
+        
         bst b;
         bst l = solve(root -> left);
         bst r = solve(root -> right);
         if(l.isBST and r.isBST and root -> val > l.maxi and root -> val < r.mini)
         {
             b = {true , max(root -> val , r.maxi) , min(root -> val , l.mini) , l.sum + r.sum + root -> val};
+            ans = max(ans , b.sum);
             
         }
         else
             b = {false , -1 , -1 , 0};
-        ans = max(ans , b.sum);
+        
         return b;
     }
     
