@@ -15,10 +15,10 @@ class Solution
         vector<bool> mstSet(v , false);
         key[0] = 0;
         parent[0] = -1;
-        //priority queue will hold node and its distance
+        //priority queue will hold  distance and node
         priority_queue<pair<int , int> , vector<pair<int , int>> , greater<pair<int , int>>> pq;
         // code here
-        pq.push({0 , 0});
+        pq.push({key[0] , 0});
         
         while(!pq.empty())
         {
