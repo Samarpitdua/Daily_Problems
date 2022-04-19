@@ -1,50 +1,36 @@
 class Solution {
 public:
-    class bst {
-    public:
-      bool isbst;
-      int max;
-      int min;
-      int sum;
+    struct bst{
+        bool isBST;
+        int maxi;
+        int mini;
+        int sum;
     };
+    
+    int ans = 0;
+    bst solve(TreeNode* root) {
 
-    bst Bst(TreeNode* root) {
-
-      if (root == nullptr)
-      {  
-        bst bres;            // Base Case
-        bres.isbst = true;
-        bres.max = INT_MIN;
-        bres.min = INT_MAX;
-        bres.sum = 0;
-        return bres;
+      if(!root)
+      {
+          bst b = {true , INT_MIN , INT_MAX , 0};
+          return b;
       }
-      bst l = Bst(root->left); // left sub-tree
-      bst r = Bst(root->right); // right sub-tree
-
-      bst ans;
-
-      ans.max = max(root->val, max(l.max, r.max));
-      ans.min = min(root->val, min(l.min, r.min));
-
-      // Check if current tree is Bst or not ?
-      ans.isbst = l.isbst && r.isbst && (l.max < root->val && r.min > root->val);
-
-      if(ans.isbst){
-          ans.sum = l.sum + r.sum + root->val;
-          ans.min = min(root->val, l.min);
-          ans.max = max(root->val, r.max);
-      }
-      else
-          ans.sum = -1;
-      
-      res = max(res, ans.sum);
-      return ans;
+        bst b;
+        bst l = solve(root -> left);
+        bst r = solve(root -> right);
+        if(l.isBST and r.isBST and root -> val > l.maxi and root -> val < r.mini)
+        {
+            b = {true , max(root -> val , r.maxi) , min(root -> val , l.mini) , l.sum + r.sum + root -> val};
+            ans = max(ans , b.sum);
+        }
+        else
+            b = {false , -1 , -1 , 0};
+        return b;
     }
     
-    int res = INT_MIN;
+    
     int maxSumBST(TreeNode* root) {
-        Bst(root);
-        return res > 0 ? res : 0;
+        solve(root);
+        return ans;
     }
 };
