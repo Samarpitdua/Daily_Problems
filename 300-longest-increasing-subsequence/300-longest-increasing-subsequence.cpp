@@ -1,19 +1,24 @@
 class Solution {
 public:
-    //nlogn approach using binary search
-    int lengthOfLIS(vector<int>& nums) {
-        int ans = 0 , n = nums.size();
-        vector<int> dp;
-        for(int i = 0 ; i < n ;i++)
+    int solve(vector<int>& nums , int ind , int prev , vector<vector<int>>& dp)
+    {
+        if(ind >= nums.size())
+            return 0;
+        if(dp[ind][prev + 1] != -1)
+            return dp[ind][prev + 1];
+        
+        int ans = solve(nums , ind + 1 , prev , dp);
+        if(prev == -1 or nums[ind] > nums[prev])
         {
-            auto x = lower_bound(dp.begin() , dp.end() , nums[i]);
-            if(x == dp.end())
-                dp.push_back(nums[i]);
-            else
-            {
-                *x = nums[i];
-            }
+            ans = max(1 + solve(nums , ind + 1 , ind , dp) , ans);
         }
-        return dp.size();
+        return dp[ind][prev + 1] = ans;
+    }
+    int lengthOfLIS(vector<int>& nums) {
+        
+        int n = nums.size();
+        vector<vector<int>> dp(n , vector<int>(n + 1 , -1));
+        int prev = -1;
+        return solve(nums , 0 , prev , dp);
     }
 };
