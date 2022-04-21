@@ -1,23 +1,20 @@
 class Solution {
 public:
-    
+    //Using Binary Search
     int lengthOfLIS(vector<int>& nums) {
         int n = nums.size();
-        vector<int> dp(n , 1);
-        int ans = 0;
-        dp[0] = 1;
-        for(int i = 1 ; i < n ;i++)
+        vector<int> dp;
+        for(auto x : nums)
         {
-            for(int j = 0 ; j < i ;j++)
+            auto it = lower_bound(dp.begin() , dp.end() , x);
+            if(it == dp.end())
             {
-                if(nums[i] > nums[j])
-                {
-                    dp[i] = max(dp[i] , 1 + dp[j]);
-                }
+                dp.push_back(x);
+            }
+            else{
+                *it = x;
             }
         }
-        for(auto x : dp)
-            ans = max(ans , x);
-        return ans;
+        return dp.size();
     }
 };
