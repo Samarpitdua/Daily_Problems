@@ -41,18 +41,15 @@ public:
 	// hasNext() and next() should behave the same as in the Iterator interface.
 	// Override them if needed.
 	int next() {
-        // cout<<v[ct++]<<" ";
-        // return 0;
+        
 	    ct++;
         return v[ct];
             
 	}
 	
 	bool hasNext() const {
-        cout<<ct<<" "<<(v.size() - 1)<<endl;
         if(ct == -1 or ct<(v.size()-1))
         {
-            cout<<":lol";
             return true;
         }
         return false;
