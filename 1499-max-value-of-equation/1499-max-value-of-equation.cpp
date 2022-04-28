@@ -17,7 +17,6 @@ public:
                 ans = max(ans , x + y + pq.top().first);
             }
             pq.push({y - x , x});
-            cout<<ans<<" ";
         }
         return ans;
         
