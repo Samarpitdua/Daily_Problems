@@ -2,21 +2,21 @@ typedef pair<int,int>pi;
 class Solution {
 public:
     //USING BELLMAN-FORD ALGORITHM
-    int networkDelayTime(vector<vector<int>>& times, int N, int K) {
-        vector<int> dist(N + 1, INT_MAX);
-        dist[K] = 0;
-        for (int i = 0; i < N; i++) {
-            for (vector<int> e : times) {
-                int u = e[0], v = e[1], w = e[2];
-                if (dist[u] != INT_MAX && dist[v] > dist[u] + w) {
-                    dist[v] = dist[u] + w;
-                }
+    int networkDelayTime(vector<vector<int>>& times, int n, int k) {
+     vector<int>dist(n+1,INT_MAX);
+        dist[k]=0;
+        for(int i = 0 ; i < n; i++)
+        {
+            for(auto edge:times)
+            {
+                int u=edge[0],v=edge[1],w=edge[2];
+                if(dist[u]!=INT_MAX and dist[v]>dist[u]+w)
+                    dist[v]=dist[u]+w;
             }
         }
-
-        int maxwait = 0;
-        for (int i = 1; i <= N; i++)
-            maxwait = max(maxwait, dist[i]);
-        return maxwait == INT_MAX ? -1 : maxwait;
+        int ans =  *max_element(dist.begin() + 1 , dist.end());
+        if(ans == INT_MAX)
+            return -1;
+        return ans;
     }
 };
