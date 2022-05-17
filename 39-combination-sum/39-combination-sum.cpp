@@ -1,30 +1,27 @@
 class Solution {
 public:
-    void solve(vector<int>& candy , int n , vector<int> temp , vector<vector<int>>& ans , int target , int index , int sum)
+    void solve(vector<int>& can , vector<vector<int>>& ans , vector<int> temp , int tar , int ind)
     {
-        if(index == n)
+        if(ind == can.size())
         {
-            if(target == 0)
-            {
+            if(0 == tar)
                 ans.push_back(temp);
-            }
             return;
         }
-        if(candy[index] <= target){
-            temp.push_back(candy[index]);
-            solve(candy , n , temp , ans , target - candy[index] , index , sum);
-          //  solve(candy , n , temp , ans , target - candy[index] , index + 1 , sum);
-             temp.pop_back();
+        if(can[ind] <= tar)
+        {
+            temp.push_back(can[ind]);
+            solve(can , ans , temp , tar - can[ind] , ind);
+            temp.pop_back();
+            solve(can , ans , temp , tar , ind + 1);
         }
-        solve(candy , n , temp , ans , target , index + 1 , sum);
-        
+        else
+            solve(can , ans , temp , tar , ind + 1);
     }
-    vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
-        
+    vector<vector<int>> combinationSum(vector<int>& can, int target) {
         vector<vector<int>> ans;
         vector<int> temp;
-        solve(candidates , candidates.size() , temp ,ans , target , 0 , 0);
+        solve(can , ans , temp , target , 0);
         return ans;
-        
     }
 };
