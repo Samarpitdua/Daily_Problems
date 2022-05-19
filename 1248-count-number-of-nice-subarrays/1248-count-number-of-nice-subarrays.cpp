@@ -34,7 +34,7 @@ public:
                 end++;
                 ans += (start * end);
                 ct--;
-                if(i != n)
+                // if(i != n)
                     i--;
                 start = 0 , end = 0; 
             }
