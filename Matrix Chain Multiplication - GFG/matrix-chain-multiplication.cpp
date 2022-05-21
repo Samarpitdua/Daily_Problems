@@ -14,22 +14,23 @@ public:
     {
         if(i >= j)
             return 0;
+        int ans = INT_MAX;
         if(dp[i][j] != -1)
             return dp[i][j];
-        int mini = 1e9;
         for(int k = i ; k < j ;k++)
         {
-            int steps = (arr[i - 1] * arr[k] * arr[j]) + solve(dp , arr , i , k)
-            + solve(dp , arr , k + 1 , j);
-            mini = min(mini , steps);
+            int temp = arr[i - 1] * arr[k] * arr[j] + 
+                      solve(dp ,arr , i , k ) + 
+                      solve(dp ,arr , k + 1 , j);
+            ans = min(ans , temp);
         }
-        return dp[i][j] = mini;
+        return dp[i][j] = ans;
     }
     int matrixMultiplication(int n, int arr[])
     {
         vector<int> v(n);
         for(int i=0;i<n;i++)
-        v[i]=arr[i];
+            v[i]=arr[i];
          vector<vector<int>> dp(n , vector<int>(n , -1));
         return solve(dp , v , 1 , n - 1);
         // code here
