@@ -1,25 +1,27 @@
 class Solution {
 public:
-    int solve(int i , int j , vector<int>& cuts , vector<vector<int>>& dp)
+    int solve(vector<int>& cuts , vector<vector<int>>& dp , int i , int j)
     {
         if(i > j)
+        {
             return 0;
+        }
         if(dp[i][j] != -1)
             return dp[i][j];
-        int mini = INT_MAX;
-        for(int ind = i ; ind <= j ;ind++)
+        
+        int ans = INT_MAX;
+        for(int ind = i ; ind <= j ; ind++)
         {
-            int cost = cuts[j + 1] - cuts[i - 1] + solve(i , ind - 1 , cuts , dp) + solve(ind + 1 , j , cuts , dp);
-            mini = min(mini , cost);
+            ans = min(ans , (cuts[j + 1] - cuts[i - 1]) + solve(cuts , dp , i , ind - 1) + solve(cuts , dp , ind + 1 , j));
         }
-        return dp[i][j] = mini;
+        return dp[i][j] = ans;
     }
     int minCost(int n, vector<int>& cuts) {
-        int c = cuts.size();
-        cuts.insert(cuts.begin() , 0);
-        vector<vector<int>> dp(c + 1 , vector<int>(c + 1 , -1));
         cuts.push_back(n);
+        cuts.push_back(0);
         sort(cuts.begin() , cuts.end());
-        return solve(1 , c , cuts , dp);
+        int y = cuts.size();
+        vector<vector<int>> dp(y , vector<int>(y , -1));
+        return solve(cuts , dp , 1 , cuts.size() - 2);
     }
 };
