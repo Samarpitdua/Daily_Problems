@@ -1,25 +1,32 @@
 class Solution {
 public:
-    void dfs(vector<vector<char>>& grid,int x,int y,int r ,int c )
+    bool isValid(vector<vector<char>>& grid , vector<vector<int>>& vis , int m , int n ,int i , int j)
     {
-        if(x < 0 || x >= r || y < 0 || y >= c || grid[x][y] != '1')
+        if(i < 0 or i >= m or j < 0 or j >= n or grid[i][j] == '0' or vis[i][j])
+            return false;
+        return true;
+    }
+    void dfs(vector<vector<char>>& grid , vector<vector<int>>& vis , int m , int n , int i , int j)
+    {
+        if(!isValid(grid , vis , m , n , i, j))
             return;
-        grid[x][y] = 0;
-        dfs(grid, x + 1 , y , r , c);
-        dfs(grid , x , y - 1 , r , c);
-        dfs(grid , x - 1 , y , r , c);
-        dfs(grid , x , y + 1 , r , c);
+        vis[i][j] = 1;
+        dfs(grid , vis , m , n , i + 1, j);
+        dfs(grid , vis , m , n , i - 1, j);
+        dfs(grid , vis , m , n , i , j + 1);
+        dfs(grid , vis , m , n , i , j - 1);
     }
     int numIslands(vector<vector<char>>& grid) {
-        int ct = 0;
-        for(int i = 0 ; i < grid.size() ; i++)
+        int m = grid.size() , n = grid[0].size() , ct = 0;
+        vector<vector<int>> vis(m , vector<int>(n , 0));
+        for(int i = 0 ; i < m ; i++)
         {
-            for(int j = 0 ; j < grid[i].size() ; j++)
+            for(int j = 0 ; j < n ;j++)
             {
-                if(grid[i][j] == '1')
+                if(!vis[i][j] and grid[i][j] == '1')
                 {
-                    dfs(grid , i , j , grid.size(), grid[0].size());
-                    ct ++;
+                    ct++;
+                    dfs(grid , vis, m , n , i , j);
                 }
             }
         }
