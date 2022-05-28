@@ -1,6 +1,6 @@
 class Solution {
 public:
-    bool dfs(vector<vector<int>>& graph , vector<int>& vis , vector<int>& par , int node , vector<int>& done)
+    bool dfs(vector<vector<int>>& graph , vector<int>& vis , int node , vector<int>& done)
     {
         if(done[node])
             return false;
@@ -13,8 +13,7 @@ public:
                 return true;
             else if(!vis[x])
             {
-                par[x] = node;
-                if(dfs(graph , vis , par , x , done))
+                if(dfs(graph , vis, x , done))
                     return true;
             }
         }
@@ -34,16 +33,15 @@ public:
         for(auto x = 0 ; x < num;x++)
         {
             vector<int> vis(num , 0);
-            vector<int> par(num , -1);
+            // vector<int> par(num , -1);
             if(!done[x])
             {
-                if(dfs(graph , vis , par , x , done))
+                if(dfs(graph , vis, x , done))
                 {
                     return false;
                 }
             }
         }
-        cout<<endl;
         return true;
     }
 };
