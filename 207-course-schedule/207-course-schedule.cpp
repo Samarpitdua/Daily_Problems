@@ -1,36 +1,49 @@
 class Solution {
 public:
+    bool dfs(vector<vector<int>>& graph , vector<int>& vis , vector<int>& par , int node , vector<int>& done)
+    {
+        if(done[node])
+            return false;
+        vis[node] = 1;
+        done[node] = 1;
+        for(auto x : graph[node])
+        {
+           
+            if(vis[x])
+                return true;
+            else if(!vis[x])
+            {
+                par[x] = node;
+                if(dfs(graph , vis , par , x , done))
+                    return true;
+            }
+        }
+         vis[node] = 0;
+        return false;
+    }
     bool canFinish(int num , vector<vector<int>>& p) {
         vector<vector<int>> graph(num);
-        vector<int> indegree(num , 0);
+        vector<int> done(num , 0);
         for(auto x : p)
         {
             graph[x[0]].push_back(x[1]);
-            indegree[x[1]]++;
+            // graph[x[1]].push_back(x[0]);
         }
-        queue<int> q;
-        int ct = 0;
         
-        for(int i = 0 ; i < num ; i++)
+        
+        for(auto x = 0 ; x < num;x++)
         {
-            if(indegree[i] == 0)
-                ct++ , q.push(i);
-        }
-        while(!q.empty())
-        {
-            int temp = q.front();
-            q.pop();
-            for(auto x: graph[temp])
+            vector<int> vis(num , 0);
+            vector<int> par(num , -1);
+            if(!done[x])
             {
-                indegree[x]--;
-                if(indegree[x] == 0)
+                if(dfs(graph , vis , par , x , done))
                 {
-                    ct++;
-                    q.push(x);
+                    return false;
                 }
             }
         }
-        return (ct == num);
-        
+        cout<<endl;
+        return true;
     }
 };
