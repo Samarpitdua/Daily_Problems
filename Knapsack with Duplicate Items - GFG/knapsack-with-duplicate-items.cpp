@@ -13,8 +13,6 @@ public:
     {
         if(ind == n)
             return 0;
-        if(W < 0)
-            return 0;
         if(dp[ind][W] != -1)
             return dp[ind][W];
         if(wt[ind] > W)
