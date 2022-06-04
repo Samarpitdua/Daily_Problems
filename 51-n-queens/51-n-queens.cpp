@@ -30,15 +30,16 @@ void solve(vector<vector<string>>& ans , int n , vector<string>& temp , int col)
             ans.push_back(temp);
             return;
         }
-        for(int i = 0 ; i < n ; i++)
+        for(int row = 0 ; row < n ; row++)
         {
-            if(isValid(i , col , temp , n))
+            if(isValid(row , col , temp , n))
             {
-                temp[i][col] = 'Q';
+                temp[row][col] = 'Q';
                 solve(ans , n , temp , col + 1);
-                temp[i][col] = '.';
+                temp[row][col] = '.';
             }
         }
+        return;
     }
         vector<vector<string>> solveNQueens(int n) {
             vector<vector<string>> ans;
