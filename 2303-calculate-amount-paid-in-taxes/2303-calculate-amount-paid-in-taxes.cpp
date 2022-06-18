@@ -2,8 +2,6 @@ class Solution {
 public:
     double calculateTax(vector<vector<int>>& brackets, int income) {
         double ans = 0.0;
-        int sum = 0;
-        int tmp = 0;
         int h = 0;
         for(auto x : brackets)
         {
