@@ -8,7 +8,7 @@ public:
         if(c[1][0] - c[0][0] == 0)
             urp = 1;
         double slope = (c[1][1] - c[0][1]) / (double)(c[1][0] - c[0][0]);
-        cout<<slope<<" ";
+        // cout<<slope<<" ";
         for(int i = 2 ; i < c.size() ; i++)
         {
             if(urp)
