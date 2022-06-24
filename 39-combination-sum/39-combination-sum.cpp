@@ -13,9 +13,7 @@ public:
             temp.push_back(can[ind]);
             solve(can , ans , temp , tar - can[ind] , ind);
             temp.pop_back();
-            solve(can , ans , temp , tar , ind + 1);
         }
-        else
             solve(can , ans , temp , tar , ind + 1);
     }
     vector<vector<int>> combinationSum(vector<int>& can, int target) {
