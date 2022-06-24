@@ -13,10 +13,11 @@ public:
     ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
         ListNode* head = NULL;
        
-        if(! list1)return list2;
-        if(! list2)return list1;
+        if(! list1)
+            return list2;
+        if(! list2)
+            return list1;
         
-       
         if(list1 -> val < list2 -> val)
         {
             head = list1;
@@ -28,7 +29,6 @@ public:
             list2 = list2 -> next;
         }
         ListNode* temp = head;
-       // cout<<head->val<<" ";
         while(list1 and list2)
         {
             if(list1->val < list2->val)
@@ -44,20 +44,10 @@ public:
            head = head -> next;
          //   cout<<head->val<<" ";
         }
-        while(list1)
-        {
+        if(list1)
             head -> next = list1 ;
-            head = head -> next;
-            list1 = list1 -> next;
-           // cout<<head->val<<" ";
-        }
-         while(list2)
-        {
+        if(list2)
             head -> next = list2 ;
-            head = head -> next;
-            list2 = list2 -> next;
-            // cout<<head->val<<" ";
-        }
         return temp;
     }
 };
