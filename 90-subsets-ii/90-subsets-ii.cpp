@@ -7,12 +7,23 @@ public:
             ans.push_back(temp);
             return;
         }
-            temp.push_back(nums[ind]);
-            solve(nums , temp , ans , n , ind + 1);
-            temp.pop_back();
-            while(ind < n - 1 and nums[ind] == nums[ind + 1])
-                ind++;
-             solve(nums , temp , ans , n , ind + 1);
+        temp.push_back(nums[ind]);
+        solve(nums , temp , ans , n , ind + 1);
+        temp.pop_back();
+        int i = ind + 1;
+        for(; i < n ;i++)
+        {
+            if(nums[i] == nums[i - 1])
+            {
+                continue;
+            }
+            else
+                break;
+        }
+        solve(nums , temp , ans , n , i);
+        
+        
+        
     }
     vector<vector<int>> subsetsWithDup(vector<int>& nums) {
         vector<vector<int>> ans;
