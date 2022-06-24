@@ -2,7 +2,7 @@ class Solution {
 public:
     string getPermutation(int n, int k) {
         string ans = "";
-        int fact = 1;
+        long long int fact = 1;
         vector<int> temp;
         for(int i = 1 ; i < n ;i++)
         {
@@ -14,13 +14,12 @@ public:
         while(1)
         {
             ans += to_string(temp[k / fact]);
-            temp.erase(temp.begin() + (k / fact));
+            temp.erase(temp.begin() + k / fact);
             if(ans.size() == n)
                 break;
             k = k % fact;
-            fact = fact / temp.size();
+            fact /= (temp.size());
         }
         return ans;
-        
     }
 };
