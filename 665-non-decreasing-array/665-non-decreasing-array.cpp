@@ -10,24 +10,20 @@ public:
             {
                 if(p == 1)
                     return false;
+                p = 1;
                 if(i == 1)
                 {
-                    p = 1;
-                    continue;
+                    
                 }
                 else
                 {
                     if(nums[i] >= nums[i - 2])
                     {
-                        nums[i - 1] = nums[i - 2];
-                        p = 1;
-                        continue;
+                 
                     }
                     else
                     {
                         nums[i] = nums[i - 1];
-                        p = 1;
-                        continue;
                     }
                 }
             }
