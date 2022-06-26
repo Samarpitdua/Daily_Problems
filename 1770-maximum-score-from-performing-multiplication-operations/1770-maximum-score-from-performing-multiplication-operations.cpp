@@ -15,17 +15,6 @@ public:
         int n = nums.size();
         int m = multipliers.size();
         vector<vector<int>>dp(m , vector<int>(m , INT_MIN));
-        // vector<vector<int>>dp(m + 1, vector<int>(n + 1, 0));
-        // for(int i = m - 1 ; i >= 0 ;i--)
-        // {
-        //     for(int l = n - 1 , r = 0; l < n and r >= 0 ;)
-        //     {
-        //         int a = (nums[l] * m[i]) + solve(nums , m , ind + 1, l + 1, r , dp);
-        //         int b = (nums[r] * m[i]) + solve(nums , m , ind + 1, l , r - 1 , dp);
-        //         return dp[i][l] = max(a , b);
-        //     }
-        // }
-        // return dp[0][0];
         return solve(nums , multipliers , 0 , 0 , n - 1 , dp);
     }
 };
