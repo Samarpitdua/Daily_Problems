@@ -15,12 +15,11 @@ public:
             if(maxi < nums[i])
                 maxi = nums[i] , n1 = i;
         }
-        int ans = INT_MAX;
+        int ans;
         if(n1 > m1)
             swap(n1 , m1);
-        {
-            ans = min({m1 + 1 , n - n1 , n1 + 1 + n - m1});
-        }
+        
+        ans = min({m1 + 1 , n - n1 , n1 + 1 + n - m1});
         return ans;
     }
 };
