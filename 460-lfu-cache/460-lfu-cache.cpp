@@ -44,11 +44,9 @@ public:
         }
         
     };
-    map<int , Node*> keyNode;
-    map<int , List*> freq;
-    // keyNode.clear();
-    // freq.clear();
-    
+    unordered_map<int , Node*> keyNode;
+    unordered_map<int , List*> freq;
+   
     int maxSize , minFreq , curSize;
     LFUCache(int capacity) {
         maxSize = capacity;
@@ -76,9 +74,6 @@ public:
             return -1;
         Node* temp = keyNode[key];
         int ans = temp -> val;
-        // for(auto x : keyNode)
-        //     cout<<x.first;
-        // cout<<temp -> val<<endl;
         updateFreqListMap(temp);
         return ans;
     }
@@ -98,21 +93,19 @@ public:
             curSize++;
             minFreq = 1;
             List* listfreq = new List();
+            
             if(freq.find(minFreq) != freq.end())
                 listfreq = freq[minFreq];
-            // cout<<value<<" ";
+            
             Node* node = new Node(key , value);
-            // cout<<node -> val<<" ";
             listfreq -> add(node);
             keyNode[key] = node;
             freq[minFreq] = listfreq;
-            // cout<<node -> val<<" ";
         }
         else
         {
             Node* node = keyNode[key];
             node -> val = value;
-            // cout<<node -> val;
             updateFreqListMap(node);
         }
     }
