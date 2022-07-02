@@ -102,11 +102,11 @@ public:
                 listfreq = freq[minFreq];
             // cout<<value<<" ";
             Node* node = new Node(key , value);
-            cout<<node -> val<<" ";
+            // cout<<node -> val<<" ";
             listfreq -> add(node);
             keyNode[key] = node;
             freq[minFreq] = listfreq;
-            cout<<node -> val<<" ";
+            // cout<<node -> val<<" ";
         }
         else
         {
