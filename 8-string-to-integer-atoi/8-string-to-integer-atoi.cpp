@@ -10,9 +10,9 @@ public:
             {
                 if(p == -1)     //checking if number is positive or negative
                 {
+                    p = 1;
                     if(s[i] == '-')
                         toggle = 1;
-                    p = 1;
                     if(s[i] == '+' or s[i] == '-')
                         continue;
                 }
@@ -28,7 +28,8 @@ public:
                     {
                         if(ans > (INT_MAX)/10 ||((ans == INT_MAX/10) && (s[i] - '0') > INT_MAX%10))
                         {
-                            if(toggle)return INT_MIN;
+                            if(toggle)
+                                return INT_MIN;
                             return INT_MAX;
                         }
                             ans = ans * 10 + (s[i] - '0');
