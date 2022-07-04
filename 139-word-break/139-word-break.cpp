@@ -1,6 +1,6 @@
 class Solution {
 public:
-    map<string , bool> mp;
+    unordered_map<string , bool> mp;
     
     bool wordBreak(string s, vector<string>& words)
     {
