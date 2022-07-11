@@ -16,15 +16,15 @@ class Solution
     //Function to find the nth catalan number.
     cpp_int findCatalan(int n) 
     {
-        if(!n)
-            return 1;
-        return (4 *n - 2) * findCatalan(n - 1) / (n + 1);
-        // vector<long long int> fact(2 * n + 1 , 0);
-        // fact[0] = 1;
-        // fact[1] = 1;
-        // for(int i = 2 ; i <= 2 * n ;i++ )
-        // fact[i] = i * fact[i - 1];
-        // return fact[2 * n] / (fact[n] * fact[n + 1]);
+        // if(!n)
+        //     return 1;
+        // return (4 *n - 2) * findCatalan(n - 1) / (n + 1);
+        vector<cpp_int> fact(2 * n + 1 , 0);
+        fact[0] = 1;
+        fact[1] = 1;
+        for(int i = 2 ; i <= 2 * n ;i++ )
+        fact[i] = i * fact[i - 1];
+        return fact[2 * n] / (fact[n] * fact[n + 1]);
         //code here
     }
 };
