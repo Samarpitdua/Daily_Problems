@@ -13,7 +13,7 @@ public:
             string curr = s.substr(0 , i);
             if(find(words.begin() , words.end() , curr) != words.end())
             {
-                
+                mp[curr] = true;
                 if(wordBreak(s.substr(i , s.size()) , words))
                 {
                     mp[s] = true;
