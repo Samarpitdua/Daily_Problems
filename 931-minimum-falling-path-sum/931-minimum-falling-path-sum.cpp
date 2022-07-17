@@ -9,7 +9,6 @@ public:
         }
         if(dp[i][j] != -1)
             return dp[i][j];
-        // return 0;
         return dp[i][j] = mat[i][j] + min({solve(n , i + 1 , j, mat , dp) , solve(n , i + 1 , j - 1, mat , dp) , solve(n , i + 1 , j + 1, mat , dp)});
     }
     int minFallingPathSum(vector<vector<int>>& matrix) {
