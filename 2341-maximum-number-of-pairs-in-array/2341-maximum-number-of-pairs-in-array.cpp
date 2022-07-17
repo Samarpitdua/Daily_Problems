@@ -9,8 +9,8 @@ public:
         vector<int> ans;
         for(auto x : mp){
             ct1 += x.second / 2;
-            if(x.second & 1)
-                ct2++;
+            ct2 += (x.second % 2);
+        
         }
         ans.push_back(ct1);
         ans.push_back(ct2);
