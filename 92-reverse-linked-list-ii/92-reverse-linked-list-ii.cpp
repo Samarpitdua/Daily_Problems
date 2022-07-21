@@ -20,11 +20,9 @@ public:
             ct++;
             if(ct == left)
             {
-              //  cout<<ct<<" ";
                 prev = head;
                 ListNode* temp2 = prev;
                 head = head -> next;
-               // ct++;
                 while(head)
                 {
                        ct++;
@@ -40,7 +38,6 @@ public:
                     ans = prev;
                 if(prev2)
                     prev2 -> next = prev;
-                // head = head -> next;
             }
             else
             {
