@@ -1,28 +1,36 @@
 class Solution {
 public:
-    void solve(vector<vector<int>>& ans , vector<int>& temp , vector<int>& c , int target , int index , int n)
-    {
-        if(target == 0)
+    void solve(vector<vector<int>>& ans , vector<int>& c , vector<int> temp , int tar , int ind){
+        if(tar == 0){
             ans.push_back(temp);
-        if(target < 0)
             return;
-        while(index < n)
-        {
-            temp.push_back(c[index]);
-            solve(ans , temp , c , target - c[index] , index + 1 , n);
-            temp.pop_back();
-            while(index < (n - 1) and c[index] == c[index + 1])
-                index++;
-            index++;
         }
-        return;
+        if(ind < 0)
+        {
+            if(tar == 0)
+                ans.push_back(temp);
+            return;
+        }
+        if(tar >= c[ind]){
+            temp.push_back(c[ind]);
+            solve(ans , c , temp , tar - c[ind], ind - 1);
+            temp.pop_back();
+            while(ind > 0 and c[ind] == c[ind - 1])
+            {
+                ind--;
+            }
+            solve(ans , c , temp , tar , ind - 1);
+        }
+        else{
+            solve(ans , c , temp , tar , ind - 1);
+        }
     }
-    vector<vector<int>> combinationSum2(vector<int>& candidates, int target) {
+    vector<vector<int>> combinationSum2(vector<int>& c, int target) {
         vector<vector<int>> ans;
+        sort(c.begin() , c.end());
         vector<int> temp;
-        sort(candidates.begin() , candidates.end());
-        solve(ans , temp , candidates , target , 0 , candidates.size());
+        int n = c.size();
+        solve(ans , c , temp , target , n - 1);
         return ans;
-     
     }
 };
