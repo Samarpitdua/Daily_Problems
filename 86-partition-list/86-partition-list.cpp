@@ -20,7 +20,6 @@ public:
             if(head -> val < x){
                 if(!temp)
                 {
-                    cout<<"y ";
                     temp = head;
                     ans1 -> next = temp;
                     head = head -> next;
@@ -33,7 +32,6 @@ public:
             else{
                 if(!temp2)
                 {
-                    cout<<"y2 ";
                     temp2 = head;
                     ans2 -> next = temp2;
                     head = head -> next;
@@ -45,8 +43,6 @@ public:
             }
             
         }
-        // cout<<temp -> val<<" "<<temp2 -> val;
-        // cout<<ans1 -> next -> val<<" "<<ans2 -> next -> val;
         if(!temp)
             return ans2 -> next;
         if(!temp2)
