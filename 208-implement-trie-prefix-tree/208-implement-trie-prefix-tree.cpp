@@ -1,47 +1,42 @@
 class Trie {
 public:
-    struct Node
-    {
-        Node* link[26];
+    struct Node{
+        Node* links[26];
         bool flag = false;
     };
-    Node *root;
-    Trie()
-    {
-       root = new Node();
+    Node* root;
+    Trie() {
+        root = new Node();     
     }
+   
     void insert(string word) {
-        Node *temp = root;
-        for(int i = 0 ; i < word.size() ; i++)
-        {
-            if(temp -> link[word[i] - 'a'] == NULL)
-            {
-                Node *newnode = new Node();
-                temp -> link[word[i] - 'a'] = newnode;
-            }
-            temp = temp -> link[word[i] - 'a'];
+        Node* node = root;
+        for(int i = 0 ; i < word.size() ;i++){
+            if(!node -> links[word[i] - 'a'])
+                node -> links[word[i] - 'a'] = new Node(); 
+            node = node -> links[word[i] - 'a'];
         }
-        temp -> flag = true;
+        node -> flag = true;
     }
     
     bool search(string word) {
-        Node *temp = root;
-        for(int i = 0 ; i < word.size() ;i++)
-        {
-            if(temp -> link[word[i] - 'a'] == NULL)
+        Node* node = root;
+        for(int i = 0 ; i < word.size() ;i++){
+            if(node -> links[word[i] - 'a'] == NULL)
                 return false;
-            temp = temp -> link[word[i] - 'a'];    
+            node = node -> links[word[i] - 'a'];
         }
-        return temp -> flag;
+        if(node -> flag)
+            return true;
+        return false;
     }
     
-    bool startsWith(string prefix) {
-        Node *temp = root;
-        for(int i = 0 ; i < prefix.size() ;i++)
-        {
-            if(temp -> link[prefix[i] - 'a'] == NULL)
+    bool startsWith(string word) {
+        Node* node = root;
+        for(int i = 0 ; i < word.size() ;i++){
+            if(node -> links[word[i] - 'a'] == NULL)
                 return false;
-            temp = temp -> link[prefix[i] - 'a'];
+            node = node -> links[word[i] - 'a'];
         }
         return true;
     }
