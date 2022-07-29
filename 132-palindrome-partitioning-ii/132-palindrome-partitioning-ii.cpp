@@ -1,34 +1,32 @@
 class Solution {
 public:
-    bool isPallin(string& s , int i , int j)
-    {
-        while(i < j)
-        {
+    bool pallu(string& s , int i , int j){
+        while(i < j){
             if(s[i] != s[j])
                 return false;
             i++ , j--;
-        }
+        } 
         return true;
+        
     }
-    int solve(string& s , int i , vector<int>& dp)
-    {
-        if(i >= s.size())
+    int solve(int i , int j , string& s , vector<int>& dp){
+        if(i >= j)
             return 0;
         if(dp[i] != -1)
             return dp[i];
-        
         int ans = INT_MAX;
-        for(int j = i ; j < s.size() ;j++)
-        {
-            if(isPallin(s , i , j))
+        for(int k = i ; k < j ;k++){
+            if(pallu(s , i , k))
             {
-                 ans = min(ans , 1 + solve(s , j + 1 , dp));
+                ans = min(ans , 1 + solve(k + 1 , j , s , dp));
             }
         }
         return dp[i] = ans;
     }
     int minCut(string s) {
-        vector<int> dp(s.size() , -1);
-        return solve(s , 0, dp) - 1;
+        int n = s.size();
+        vector<int> dp(n + 1 , -1);
+        return solve(0 , n, s , dp) - 1;
+        
     }
 };
