@@ -7,16 +7,24 @@ public:
         mp.clear();
         mp2.clear();
     }
+    
     void change(int index, int number) {
-        auto it = mp.find(index);
-        if (it != end(mp))
-            mp2[it->second].erase(index);
+        if(mp.find(index) != mp.end()){
+            int val = mp[index];
+            mp2[val].erase(index);
+        }
         mp[index] = number;
-        mp2[number].insert(index);
+         mp2[number].insert(index);
     }
+    
     int find(int number) {
-        auto it = mp2.find(number);
-        return it == end(mp2) || it->second.empty() ? -1 : *begin(it->second);
+        if(mp2.find(number) != mp2.end()){
+            for(auto x : mp2[number])
+                return x;
+        }
+        else
+            return -1;
+       return -1; 
     }
 };
 
