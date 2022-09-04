@@ -21,10 +21,6 @@ public:
             else
             {
                 root = root -> right;
-                // while(root and !root -> left)
-                //     root = root -> right;
-                // if(root)
-                // root = root -> left;
             }
         }
     }
