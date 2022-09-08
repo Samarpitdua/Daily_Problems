@@ -24,7 +24,7 @@ public:
         {
             if(ans > abs(target - root -> val))
             ans = abs(target - root -> val) , ct = root -> val;
-            cout<<ans<<" ";
+            // cout<<ans<<" ";
             solve(root -> left , target , ans , ct);
         }
         else
