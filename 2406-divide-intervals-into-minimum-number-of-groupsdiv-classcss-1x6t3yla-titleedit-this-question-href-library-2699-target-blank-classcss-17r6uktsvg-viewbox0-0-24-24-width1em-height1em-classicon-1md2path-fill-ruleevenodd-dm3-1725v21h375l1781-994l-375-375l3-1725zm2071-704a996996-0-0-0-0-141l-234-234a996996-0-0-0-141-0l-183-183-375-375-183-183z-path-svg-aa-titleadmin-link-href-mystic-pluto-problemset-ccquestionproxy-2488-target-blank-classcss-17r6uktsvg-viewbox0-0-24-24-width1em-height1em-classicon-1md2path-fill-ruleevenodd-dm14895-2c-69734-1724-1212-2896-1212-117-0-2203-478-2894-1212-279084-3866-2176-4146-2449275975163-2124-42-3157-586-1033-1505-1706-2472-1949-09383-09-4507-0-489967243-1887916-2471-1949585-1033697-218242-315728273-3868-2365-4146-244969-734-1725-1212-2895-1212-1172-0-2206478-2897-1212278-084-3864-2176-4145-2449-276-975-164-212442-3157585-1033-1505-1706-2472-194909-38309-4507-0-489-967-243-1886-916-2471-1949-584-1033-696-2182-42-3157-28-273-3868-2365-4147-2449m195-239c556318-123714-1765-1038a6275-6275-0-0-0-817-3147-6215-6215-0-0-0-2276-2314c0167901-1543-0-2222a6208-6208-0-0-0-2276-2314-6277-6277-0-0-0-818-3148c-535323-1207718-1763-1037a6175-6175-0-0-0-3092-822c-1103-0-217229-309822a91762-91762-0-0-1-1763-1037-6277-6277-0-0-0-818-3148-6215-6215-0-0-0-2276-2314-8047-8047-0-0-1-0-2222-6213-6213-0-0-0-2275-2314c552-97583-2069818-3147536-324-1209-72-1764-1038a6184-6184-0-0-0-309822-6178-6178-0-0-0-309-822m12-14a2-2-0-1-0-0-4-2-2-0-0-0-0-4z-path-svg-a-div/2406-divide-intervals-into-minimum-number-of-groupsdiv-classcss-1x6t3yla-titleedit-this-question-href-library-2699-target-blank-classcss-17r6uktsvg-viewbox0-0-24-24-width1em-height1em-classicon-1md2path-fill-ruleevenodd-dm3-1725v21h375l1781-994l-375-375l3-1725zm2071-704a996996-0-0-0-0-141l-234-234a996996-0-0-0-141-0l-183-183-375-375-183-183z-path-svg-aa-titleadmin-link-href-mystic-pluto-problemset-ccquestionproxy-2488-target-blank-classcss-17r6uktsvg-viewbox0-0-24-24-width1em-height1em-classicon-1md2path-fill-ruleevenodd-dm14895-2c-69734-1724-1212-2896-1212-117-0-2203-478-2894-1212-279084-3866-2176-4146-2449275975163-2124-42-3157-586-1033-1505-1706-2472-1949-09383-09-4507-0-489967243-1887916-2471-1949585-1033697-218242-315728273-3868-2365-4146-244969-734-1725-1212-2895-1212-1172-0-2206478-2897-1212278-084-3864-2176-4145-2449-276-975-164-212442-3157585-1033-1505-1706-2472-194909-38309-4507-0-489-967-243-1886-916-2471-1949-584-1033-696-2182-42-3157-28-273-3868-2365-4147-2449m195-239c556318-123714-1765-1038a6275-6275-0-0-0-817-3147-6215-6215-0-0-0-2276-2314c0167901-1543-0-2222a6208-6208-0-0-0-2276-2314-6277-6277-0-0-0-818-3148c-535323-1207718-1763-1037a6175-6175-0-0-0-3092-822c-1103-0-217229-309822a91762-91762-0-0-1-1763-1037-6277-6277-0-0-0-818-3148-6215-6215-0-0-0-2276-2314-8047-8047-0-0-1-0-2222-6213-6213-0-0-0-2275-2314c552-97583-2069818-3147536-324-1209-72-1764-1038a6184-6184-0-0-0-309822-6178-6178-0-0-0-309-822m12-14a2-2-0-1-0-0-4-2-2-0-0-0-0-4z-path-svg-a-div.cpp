@@ -1,21 +1,9 @@
-
+#define pi pair<int , int>
 class Solution {
 public:
-    // static bool comp(pair<int , int>& v , pair<int , int>& v2)
-    // {
-    //     if(v.second != v2.second)
-    //     {
-    //         return v.second > v2.second;
-    //     }
-    //     else
-    //     {
-    //         return v.first > v.second;
-    //     }
-    // }
     int minGroups(vector<vector<int>>& i) {
         sort(i.begin() , i.end());
-        priority_queue<pair<int , int> , vector<pair<int , int>> , greater<pair<int , int>>> pq;
-        int ans = 0;
+        priority_queue<pi , vector<pi> , greater<pi>> pq;
         for(auto x : i)
         {
             if(pq.empty())
