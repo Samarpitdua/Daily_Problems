@@ -1,7 +1,7 @@
 class Twitter {
 public:
     unordered_map<int , vector<pair<int , int>>> users;
-    unordered_map<int , set<int>> follows;
+    unordered_map<int , unordered_set<int>> follows;
     long long time;
     Twitter() {
         time = 0;
