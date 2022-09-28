@@ -1,36 +1,26 @@
 class Solution {
 public:
-    void solve(vector<int>& nums , vector<int> temp , vector<vector<int>>& ans , int n , int ind)
+    void solve(int ind , vector<int>& nums , vector<int>& temp , vector<vector<int>>& ans)
     {
-        if(ind == n)
+        if(ind == nums.size())
         {
             ans.push_back(temp);
             return;
         }
         temp.push_back(nums[ind]);
-        solve(nums , temp , ans , n , ind + 1);
+        solve(ind + 1 , nums , temp , ans);
         temp.pop_back();
-        int i = ind + 1;
-        for(; i < n ;i++)
-        {
-            if(nums[i] == nums[i - 1])
-            {
-                continue;
-            }
-            else
-                break;
-        }
-        solve(nums , temp , ans , n , i);
-        
-        
-        
+        int t = nums[ind];
+        while(ind < nums.size() and nums[ind] == t)
+            ind++;
+        solve(ind , nums , temp , ans);
     }
     vector<vector<int>> subsetsWithDup(vector<int>& nums) {
+        sort(nums.begin() , nums.end());
         vector<vector<int>> ans;
         vector<int> temp;
-        sort(nums.begin() , nums.end());
-        int n = nums.size();
-        solve(nums , temp , ans , n , 0);
+        //recursive function
+        solve(0 , nums , temp , ans);
         return ans;
     }
 };
