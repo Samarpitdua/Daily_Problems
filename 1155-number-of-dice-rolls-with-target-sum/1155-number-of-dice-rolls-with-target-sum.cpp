@@ -14,8 +14,7 @@ public:
             ans = ans + solve(n - 1, k , target - i , dp);
             ans %= mod;
         }
-        dp[n][target] = ans % mod;
-        return ans % mod ;
+        return dp[n][target] = ans % mod ;
     }
     int numRollsToTarget(int n, int k, int target) {
         vector<vector<long long int>> dp(n + 1 , vector<long long int>(target + 1 , -1));
