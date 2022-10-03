@@ -26,7 +26,6 @@ public:
         for(auto x : p)
         {
             graph[x[0]].push_back(x[1]);
-            // graph[x[1]].push_back(x[0]);
         }
         
         
