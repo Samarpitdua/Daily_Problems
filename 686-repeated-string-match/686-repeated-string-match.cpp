@@ -1,6 +1,6 @@
 class Solution {
 public:
-    # define MOD 1000000
+    # define MOD 10000000
     int rabinKarp(string s , string t)
     {
         int m = t.size();
