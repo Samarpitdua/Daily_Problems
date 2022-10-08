@@ -22,7 +22,6 @@ public:
             }
         }
         return target - diff;
-        
     
         
     }
