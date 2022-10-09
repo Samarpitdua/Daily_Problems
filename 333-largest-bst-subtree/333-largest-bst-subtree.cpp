@@ -32,7 +32,7 @@ public:
             bst b = {true , max(root -> val , r.maxi) , min(root -> val , l.mini) , 1 + l.sz + r.sz};
             return b;
         }
-        return {false , -1 , -1 , max(l.sz , r.sz)};
+        return {false , 0 , 0 , max(l.sz , r.sz)};
     }
     int largestBSTSubtree(TreeNode* root) {
         bst b = largestBST(root);
