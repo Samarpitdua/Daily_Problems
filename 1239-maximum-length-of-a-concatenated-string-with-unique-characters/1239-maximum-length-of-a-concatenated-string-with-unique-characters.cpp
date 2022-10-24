@@ -13,8 +13,7 @@ public:
         {
             if(freq[arr[ind][j] - 'a'] == 1)
             {
-                p = 1;
-                break;
+                return;
             }
             else
                 freq[arr[ind][j] - 'a'] = 1;
