@@ -8,21 +8,14 @@ public:
             return;
         }
         solve(arr , ind + 1, maxi , s , freq);
-        int p = 0;
         for(int j = 0 ; j < arr[ind].size() ;j++)
         {
             if(freq[arr[ind][j] - 'a'] == 1)
-            {
                 return;
-            }
             else
                 freq[arr[ind][j] - 'a'] = 1;
         }
-        if(p == 0)
-        {
-            s += arr[ind];
-            solve(arr , ind + 1 , maxi , s , freq);
-        }
+        solve(arr , ind + 1 , maxi , s + arr[ind], freq);
     }
     int maxLength(vector<string>& arr) {
         int maxi = 0;
