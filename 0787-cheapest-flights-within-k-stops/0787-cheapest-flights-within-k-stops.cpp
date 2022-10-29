@@ -21,7 +21,7 @@ public:
             {
                 int adjNode = x.first;
                 int edW = x.second;
-                if((cost + edW) < dist[adjNode] and stop <= K)
+                if((cost + edW) < dist[adjNode])
                 {
                     dist[adjNode] = cost + edW;
                     q.push({stop + 1 , {adjNode , cost + edW}});
