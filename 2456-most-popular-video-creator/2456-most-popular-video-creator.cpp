@@ -13,7 +13,7 @@ public:
                 mp[creators[i]] = views[i];
             maxi = max(maxi , mp[creators[i]]);
         }
-        map<string , pair<long long int , string>> mp2;
+        unordered_map<string , pair<long long int , string>> mp2;
         for(int i = 0 ; i < n ;i++)
         {
             if(mp[creators[i]] == maxi)
