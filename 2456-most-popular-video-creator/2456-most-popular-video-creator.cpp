@@ -3,7 +3,7 @@ public:
     vector<vector<string>> mostPopularCreator(vector<string>& creators, vector<string>& ids, vector<int>& views) {
         int n = ids.size();
         vector<vector<string>> v;
-        map<string , long long int> mp;
+        unordered_map<string , long long int> mp;
         long long int maxi = 0;
         for(int i = 0 ; i < n ;i++)
         {
