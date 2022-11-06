@@ -39,7 +39,7 @@ public:
                 ans += pqr.top().first;
                 pqr.pop();
             }
-            cout<<ans<<" ";
+            // cout<<ans<<" ";
             ct++;
             
         }
