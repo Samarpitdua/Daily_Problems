@@ -28,14 +28,6 @@ class Solution {
 	            }
 	        }
 	    }
-	   // for(int i=0;i<matrix.size();i++)
-	   // {
-	   //     for(int j=0;j<matrix.size();j++)
-	   //     {
-	   //         if(matrix[i][j]==1000000)
-	   //         matrix[i][j]=-1;
-	   //     }
-	   // }
 	    // Code here
 	}
 };
