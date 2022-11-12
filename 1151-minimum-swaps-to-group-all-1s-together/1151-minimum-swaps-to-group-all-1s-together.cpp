@@ -13,13 +13,9 @@ public:
         
         for(int i = 0, j = 0 ; i < n ;i++){
             if(data[i] == 1)
-            {
                 init++;
-            }
             else
-            {
                 swap++;
-            }
             if(init + swap == ct)
             {
                 ans = min(ans , swap);
@@ -29,7 +25,6 @@ public:
                     swap--;
                 j++;
             }
-            
         }
         return ans;
     }
