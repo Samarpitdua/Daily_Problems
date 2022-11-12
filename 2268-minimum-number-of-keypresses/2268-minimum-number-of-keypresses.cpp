@@ -1,7 +1,7 @@
 class Solution {
 public:
     int minimumKeypresses(string s) {
-        map<char, int> mp;
+        unordered_map<char, int> mp;
         for(auto x : s)
             mp[x]++;
         int ans = 0 , ct = 1;
