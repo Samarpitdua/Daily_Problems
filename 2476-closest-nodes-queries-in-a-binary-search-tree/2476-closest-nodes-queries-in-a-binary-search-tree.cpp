@@ -25,13 +25,13 @@ public:
         
         inorder(root , v);
         int n = v.size();
-        sort(v.begin() , v.end());
+        // sort(v.begin() , v.end());
         vector<vector<int>> ans;
         for(auto x : queries)
         {
             vector<int> temp;
             int mini = lower_bound(v.begin() , v.end() , x) - v.begin();
-            cout<<mini<<" ";
+            // cout<<mini<<" ";
             if(x < v[0])
                 temp.push_back(-1);
             else if(mini >= n)
