@@ -9,17 +9,18 @@ public:
             int n = temp.size();
             if(ch == '#')
             {
-                ch = temp[n - 1];
+                
             }
             else
             {
                 if(temp[0] == ch)
                 {
-                    ch = temp[n - 1];
+                    
                 }
                 else
                     return false;
             }
+             ch = temp[n - 1];
         }
         if(ch == sentence[0])
             return 1;
