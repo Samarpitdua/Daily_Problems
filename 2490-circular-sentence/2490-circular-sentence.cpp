@@ -7,19 +7,9 @@ public:
         while(ss >> temp)
         {
             int n = temp.size();
-            if(ch == '#')
-            {
-                
-            }
-            else
-            {
-                if(temp[0] == ch)
-                {
-                    
-                }
-                else
+            if(ch != '#')
+                if(temp[0] != ch)
                     return false;
-            }
              ch = temp[n - 1];
         }
         if(ch == sentence[0])
