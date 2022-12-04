@@ -12,8 +12,6 @@ public:
                     return false;
              ch = temp[n - 1];
         }
-        if(ch == sentence[0])
-            return 1;
-        return 0;
+        return ch == sentence[0];
     }
 };
