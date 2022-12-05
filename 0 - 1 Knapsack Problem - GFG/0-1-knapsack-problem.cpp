@@ -7,53 +7,26 @@ using namespace std;
 class Solution
 {
     public:
-    int solve(int W , int wt[] , int val[] , int index , vector<vector<int>>& dp)
+    int solve(int ind , int wt[] , int val[] , int n , int W , vector<vector<int>>& dp)
     {
-        if(index == 0)
+        if(ind == n)
         {
-            if(W >= wt[0])
-                return val[0];
-            else
-                return 0;
+            return 0;
         }
-        if(dp[index][W] != -1)
-            return dp[index][W];
-        int right;
-        if(wt[index] > W)
+        if(dp[ind][W] != -1)
+            return dp[ind][W];
+        if(wt[ind] <= W)
         {
-            right = INT_MIN;
+            return dp[ind][W] = max(val[ind] + solve(ind + 1 , wt , val , n , W - wt[ind] , dp) ,solve(ind + 1 , wt , val , n , W  , dp)  );
         }
-        else
-        {
-            right = val[index] + solve(W-wt[index] , wt , val , index - 1  ,dp);
-        }
-        int left = solve(W , wt , val , index - 1  ,dp);
-        return dp[index][W] = max(left , right);
-        
+        return dp[ind][W] = solve(ind + 1 , wt , val , n , W , dp) ;
     }
     //Function to return max value that can be put in knapsack of capacity W.
     int knapSack(int W, int wt[], int val[], int n) 
     { 
-        vector<vector<int>>dp(n  , vector<int>(W + 1,0));
-        for(int i = wt[0] ; i <= W ;i++)
-        {
-            dp[0][i] = val[0];
-        }
-        for(int i = 1 ; i < n ;i++)
-        {
-            for(int j = 0 ; j <= W ; j++)
-            {
-                 int right = INT_MIN;
-                if(wt[i] <= j)
-                {
-                    right = val[i] + dp[i - 1][j-wt[i]];
-                }
-                int left = dp[i - 1][j];
-                dp[i][j] = max(left , right);
-            }
-            
-        }
-       return dp[n - 1][W];
+        vector<vector<int>> dp(n , vector<int>(W + 1 , -1));
+        return solve(0 , wt , val , n , W , dp);
+       // Your code here
     }
 };
 
