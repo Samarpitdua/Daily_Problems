@@ -1,7 +1,6 @@
 # Merge k Sorted Arrays
-## Medium 
-<div class="problem-statement">
-                <p></p><p><span style="font-size:18px">Given <strong>K</strong> sorted arrays arranged in the form of a matrix of size K*K. The task is to merge them into one sorted array.<br>
+## Medium
+<div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Given <strong>K</strong> sorted arrays arranged in the form of a matrix of size K*K. The task is to merge them into one sorted array.<br>
 <strong>Example 1:</strong> </span></p>
 
 <pre><span style="font-size:18px"><strong>Input:
@@ -35,9 +34,8 @@ The merged list will be
 You do not need to read input or print anything. Your task is to complete&nbsp;<strong>mergeKArrays</strong>() function which takes 2 arguments, an arr[K][K] 2D Matrix containing K&nbsp;sorted arrays and an integer K denoting the number of sorted arrays, as input and returns the merged sorted array ( as a pointer to the merged sorted arrays in <strong>cpp,&nbsp;</strong>as an ArrayList in&nbsp;<strong>java,&nbsp;</strong>and list in&nbsp;<strong>python</strong>)</span></p>
 
 <p><span style="font-size:18px"><strong>Expected Time Complexity:</strong>&nbsp;O(K<sup>2</sup></span>*<span style="font-size:18px">Log(K))<br>
-<strong>Expected Auxiliary Space:</strong>&nbsp;O(K)</span></p>
+<strong>Expected Auxiliary Space:</strong>&nbsp;O(K<sup>2</sup>)</span></p>
 
 <p><span style="font-size:18px"><strong>Constraints</strong>:<br>
 1 &lt;= K &lt;= 100</span></p>
- <p></p>
-            </div>
+</div>
