@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 //Initial Template for C++
 
 #include<bits/stdc++.h>
@@ -11,44 +11,39 @@ for (int i=0; i < size; i++)
 }
 
 
- // } Driver Code Ends
+// } Driver Code Ends
 //User function Template for C++
+#define pi pair<int , pair<int , int>>
 
-#define pii pair<int , pair<int , int>>
 class Solution
 {
     public:
     //Function to merge k sorted arrays.
-    vector<int> mergeKArrays(vector<vector<int>> arr, int k)
+    vector<int> mergeKArrays(vector<vector<int>> arr, int K)
     {
         vector<int> ans;
-        priority_queue<pii , vector<pii> , greater<pii>> pq;
-        for(int i = 0 ; i < k ;i++){
+        priority_queue<pi , vector<pi> , greater<pi>> pq;
+        int i = 0 , j = 0;
+        for(int i = 0 ; i < K ; i++)
+        {
             pq.push({arr[i][0] , {i , 0}});
         }
-        while(1)
+        while(!pq.empty())
         {
-            if(ans.size() == k * k)
-                break;
             auto temp = pq.top();
-            pq.pop();
-            int f = temp.first;
-            int sf = temp.second.first;
-            int ss = temp.second.second;
-            ans.push_back(f);
-            if(ss + 1 < k)
+            ans.push_back(temp.first);
+            if((temp.second.second + 1) < K)
             {
-                pq.push({arr[sf][ss + 1] , {sf , ss + 1}});
+                pq.push({arr[temp.second.first][temp.second.second + 1] , {temp.second.first , temp.second.second + 1}});
             }
-            
+            pq.pop();
         }
-        return ans;
         return ans;
         //code here
     }
 };
 
-// { Driver Code Starts.
+//{ Driver Code Starts.
 
 int main()
 {
@@ -76,4 +71,5 @@ int main()
 
 
 
-  // } Driver Code Ends
+
+// } Driver Code Ends
