@@ -1,5 +1,6 @@
 class Solution {
 public:
+    //pass
     int par[26];
     
     int find(int x){
