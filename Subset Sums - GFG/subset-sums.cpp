@@ -1,33 +1,32 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 #include<bits/stdc++.h> 
 using namespace std; 
 
- // } Driver Code Ends
+// } Driver Code Ends
 class Solution
 {
 public:
-    void solve(vector<int>& arr , vector<int>& ans , int ind , int sum)
+void solve(vector<int>& arr , int sum , int ind , vector<int>& ans)
+{
+    if(ind < 0)
     {
-        if(ind < 0)
-        {
-            ans.push_back(sum);
-            return;
-        }
-        solve(arr , ans , ind - 1 , sum + arr[ind]);
-        solve(arr , ans , ind - 1 , sum );
-        
+        ans.push_back(sum);
+        return;
     }
-    vector<int> subsetSums(vector<int> arr, int N)
+    solve(arr , sum + arr[ind] , ind - 1 , ans);
+    solve(arr , sum , ind - 1 , ans);
+}
+    vector<int> subsetSums(vector<int> arr, int n)
     {
         vector<int> ans;
         int sum = 0;
-        solve(arr , ans , N - 1 , sum);
+        solve(arr , sum , n - 1, ans);
         return ans;
         // Write Your Code here
     }
 };
 
-// { Driver Code Starts.
+//{ Driver Code Starts.
 int main()
 {
     int t;
@@ -49,4 +48,5 @@ int main()
         cout<<endl;
     }
     return 0;
-}  // } Driver Code Ends
+}
+// } Driver Code Ends
