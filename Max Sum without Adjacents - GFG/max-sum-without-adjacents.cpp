@@ -1,30 +1,34 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 #include <bits/stdc++.h>
 
 using namespace std;
 
 
- // } Driver Code Ends
+// } Driver Code Ends
 //User function template for C++
 class Solution{
 public:	
 	// calculate the maximum sum with out adjacent
+	int solve(int ind, vector<int> &dp, int *arr) {
+	    if(ind == 0) return arr[0];
+	    
+	    if(ind < 0) return 0;
+	    
+	    if(dp[ind] != -1) return dp[ind];
+	    
+	    int nottake = solve(ind - 1, dp, arr); // no adjacent;
+	    int take = arr[ind] + solve(ind - 2, dp, arr);
+	    
+	    return dp[ind] = max(take, nottake);
+	    
+	}
 	int findMaxSum(int *arr, int n) {
-	    if(n == 1)
-	        return arr[0];
-	   vector<int> dp(n + 1 , 0);
-	   dp[0] = arr[0];
-	   dp[1] = max(arr[0] , arr[1]);
-	   for(int i = 2 ; i< n ;i++)
-	   {
-	       dp[i] = max(arr[i] + dp[i - 2], dp[i - 1]);
-	   }
-	   return dp[n - 1];
-	    // code here
+	    vector<int> dp(n + 1, -1);
+	    return solve(n - 1, dp, arr);
 	}
 };
 
-// { Driver Code Starts.
+//{ Driver Code Starts.
 
 int main() {
     int t;
@@ -41,4 +45,5 @@ int main() {
         cout << ans << "\n";
     }
     return 0;
-}  // } Driver Code Ends
+}
+// } Driver Code Ends
