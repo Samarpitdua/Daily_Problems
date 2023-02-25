@@ -8,19 +8,18 @@ class Solution {
     int solve(vector<int> piles , int n , int mid , int h)
     {
         int ct = 0;
-        for(int i = 0 ; i < n ;)
+        for(int i = 0 ; i < n ; i++)
         {
-            if(piles[i] <= mid)
-            {
-                ct++;
-                i++;
-            }
-            else
+            // if(piles[i] <= mid)
+            // {
+            //     ct++;
+            //     i++;
+            // }
+            // else
             {
                 ct += (piles[i] / mid);
                 if(piles[i] % mid > 0)
                 ct++;
-                i++;
             }
             if(ct > h)
             return false;
