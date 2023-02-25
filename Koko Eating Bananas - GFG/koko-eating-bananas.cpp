@@ -10,25 +10,17 @@ class Solution {
         int ct = 0;
         for(int i = 0 ; i < n ; i++)
         {
-            // if(piles[i] <= mid)
-            // {
-            //     ct++;
-            //     i++;
-            // }
-            // else
-            {
                 ct += (piles[i] / mid);
                 if(piles[i] % mid > 0)
                 ct++;
-            }
-            if(ct > h)
-            return false;
+                if(ct > h)
+                    return false;
         }
         return (ct <= h);
     }
     int Solve(int n, vector<int>& piles, int h) {
         int low = 1 , high = 1e9;
-        sort(piles.begin() , piles.end());
+        sort(piles.begin() , piles.end()  ,greater<int>());
         while(low <= high)
         {
             int mid = low + (high - low) / 2;
